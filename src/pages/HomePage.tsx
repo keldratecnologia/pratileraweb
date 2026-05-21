@@ -292,7 +292,6 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-20">
             {HOW_IT_WORKS.map((step, i) => {
               const icons = [MapPin, LayoutGrid, Store, MessageSquare];
-              const colors = ['#06C1B6', '#6366F1', '#FF7300', '#10B981'];
               const Icon = icons[i];
               return (
                 <motion.div

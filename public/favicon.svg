@@ -1,4 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="7" fill="#FF7300"/>
-  <text x="16" y="24" font-family="'Arial Black', Arial, sans-serif" font-size="22" font-weight="900" text-anchor="middle" fill="white">P</text>
+  <defs>
+    <clipPath id="c">
+      <circle cx="16" cy="16" r="16"/>
+    </clipPath>
+  </defs>
+  <image href="/app-icon.png" x="0" y="0" width="32" height="32" clip-path="url(#c)"/>
 </svg>

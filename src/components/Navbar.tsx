@@ -30,7 +30,7 @@ export default function Navbar() {
             style={{ width: '40px', height: '40px' }}
           />
           <span
-            className="text-xl font-bold tracking-tight hidden sm:block"
+            className="text-xl font-bold tracking-tight"
             style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245' }}
           >
             Pratilera

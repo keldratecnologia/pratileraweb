@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Gotham';
+  src: url('/fonts/Gotham-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0020-U+007E;
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('/fonts/Calibri-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('/fonts/Calibri-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('/fonts/Calibri-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('/fonts/Calibri-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Calibri';
+  src: url('/fonts/Calibri-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  /* Cores primárias – idênticas ao app */
+  --color-orange: #FF7300;
+  --color-orange-light: #FF8C33;
+  --color-orange-dark: #CC5C00;
+
+  /* Cor da logo / azul escuro */
+  --color-navy: #1C3245;
+  --color-navy-500: #495E70;
+  --color-navy-600: #3A4D5D;
+  --color-navy-700: #2B3B4A;
+  --color-navy-800: #1C2936;
+  --color-navy-900: #0E151B;
+
+  /* Cores secundárias */
+  --color-teal: #06C1B6;
+  --color-red: #E60509;
+  --color-yellow: #FEC128;
+
+  /* Neutros derivados da marca */
+  --color-neutral-50: #F8FAFC;
+  --color-neutral-100: #E8EEF3;
+  --color-neutral-200: #D1DCE5;
+  --color-neutral-300: #A3B1BE;
+  --color-neutral-400: #768798;
+
+  /* Backgrounds */
+  --color-bg: #F9FAFB;
+  --color-bg-white: #FFFFFF;
+  --color-bg-tertiary: #F3F4F6;
+
+  /* Tipografia */
+  --font-gotham: 'Inter', sans-serif;
+  --font-display: 'Inter', sans-serif;
+  --font-calibri: 'Inter', 'Calibri', system-ui, sans-serif;
+
+  /* Status */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-navy);
+  font-family: var(--font-calibri);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Classe utilitária para títulos */
+.font-gotham {
+  font-family: var(--font-gotham);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-calibri {
+  font-family: var(--font-calibri);
+}

@@ -205,7 +205,7 @@ export default function HomePage() {
             className="text-lg sm:text-xl mb-10 leading-relaxed"
             style={{ color: '#2B3B4A' }}
           >
-            O guia completo para encontrar estabelecimentos, serviços e utilidades perto de você.
+            O guia completo para encontrar estabelecimentos, serviços, eventos e utilidades perto de você.
           </p>
 
           <div className="flex justify-center">
@@ -236,7 +236,7 @@ export default function HomePage() {
                   whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(28,50,69,0.10)', transition: { duration: 0.2, delay: 0 } }}
                   transition={{ delay: 0.6 + i * 0.1, duration: 0.35 }}
                   className="px-4 py-1.5 rounded-full text-sm font-semibold cursor-default inline-block"
-                  style={{ backgroundColor: 'rgba(28,50,69,0.15)', color: '#1C3245' }}
+                  style={{ backgroundColor: 'rgba(28,50,69,0.15)', color: '#FFFFFF' }}
                 >
                   {city}
                 </motion.div>

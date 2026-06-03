@@ -1,0 +1,185 @@
+<!doctype html>
+<!--
+  Versão ESTÁTICA da Política de Privacidade (conteúdo idêntico a src/pages/PrivacidadePage.tsx).
+  Existe para que o HTML cru tenha o texto completo — necessário para a verificação do
+  Google OAuth, Google Play (Data Safety), Apple e SEO, já que o site é um SPA (React)
+  que renderiza o conteúdo via JavaScript. Servida em /privacidade via vercel.json.
+  Ao atualizar a política, atualize também a página React correspondente.
+-->
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Política de Privacidade — Pratilera</title>
+    <meta name="description" content="Política de Privacidade do Pratilera: como coletamos, usamos e protegemos seus dados pessoais, em conformidade com a LGPD." />
+    <meta name="theme-color" content="#FF7300" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root { --orange:#FF7300; --navy:#1C3245; --body:#495E70; --muted:#768798; --line:#E8EEF3; }
+      * { box-sizing: border-box; }
+      body { margin:0; font-family:'Inter',system-ui,-apple-system,sans-serif; color:var(--body); background:#fff; -webkit-font-smoothing:antialiased; }
+      a { color:var(--orange); }
+      .header { background:var(--navy); padding:64px 24px 56px; }
+      .wrap { max-width:768px; margin:0 auto; }
+      .back { display:inline-flex; align-items:center; gap:6px; color:#fff; opacity:.6; text-decoration:none; font-size:14px; font-weight:600; margin-bottom:28px; }
+      .back:hover { opacity:1; }
+      .eyebrow { color:var(--orange); font-size:12px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; margin:0 0 12px; }
+      h1 { color:#fff; font-size:34px; line-height:1.15; letter-spacing:-.02em; margin:0 0 12px; font-weight:700; }
+      .subtitle { color:#A3B1BE; font-size:16px; margin:0; }
+      .updated { color:var(--muted); font-size:12px; margin-top:16px; }
+      main { max-width:768px; margin:0 auto; padding:56px 24px 64px; }
+      section { margin-bottom:40px; }
+      h2 { color:var(--navy); font-size:18px; font-weight:700; margin:0 0 12px; }
+      p { font-size:14px; line-height:1.7; margin:0 0 12px; }
+      strong { color:var(--navy); }
+      ul { font-size:14px; line-height:1.7; padding-left:20px; margin:0 0 12px; }
+      li { margin-bottom:4px; }
+      .note { background:#EDF9F8; border-left:4px solid #06C1B6; color:var(--navy); padding:20px; border-radius:16px; font-size:14px; line-height:1.7; margin-bottom:40px; }
+      .table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:12px; margin:8px 0 0; }
+      table { width:100%; border-collapse:collapse; font-size:12px; }
+      th { text-align:left; padding:12px 16px; font-weight:700; color:var(--navy); background:#F3F4F6; }
+      td { padding:12px 16px; color:var(--body); border-top:1px solid var(--line); }
+      footer { border-top:1px solid var(--line); padding:28px 24px; text-align:center; color:var(--muted); font-size:13px; }
+      footer a { color:var(--muted); margin:0 8px; }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrap">
+        <a class="back" href="/">&larr; Voltar ao início</a>
+        <p class="eyebrow">Pratilera — Documentos Legais</p>
+        <h1>Política de Privacidade</h1>
+        <p class="subtitle">Como coletamos, usamos e protegemos seus dados pessoais no Pratilera.</p>
+        <p class="updated">Última atualização: 19 de maio de 2026</p>
+      </div>
+    </header>
+
+    <main>
+      <div class="note">
+        <strong>Adequação à LGPD:</strong> Esta Política foi elaborada em conformidade com a Lei nº 13.709/2018 (Lei Geral de Proteção de Dados Pessoais — LGPD) e demais normas aplicáveis à proteção de dados no Brasil.
+      </div>
+
+      <section>
+        <h2>1. Controlador dos Dados</h2>
+        <p>O controlador responsável pelo tratamento dos seus dados pessoais é a <strong>Keldra Tecnologia LTDA</strong>, CNPJ 66.274.795/0001-34, com sede no Estado de Minas Gerais, Brasil.</p>
+        <p>Para exercer seus direitos ou esclarecer dúvidas sobre o tratamento dos seus dados, entre em contato pelo e-mail: <a href="mailto:contato@pratilera.app.br">contato@pratilera.app.br</a>.</p>
+      </section>
+
+      <section>
+        <h2>2. Dados Coletados</h2>
+        <p><strong>Usuários consumidores:</strong></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Dado</th><th>Finalidade</th><th>Base legal (LGPD)</th></tr></thead>
+            <tbody>
+              <tr><td>Nome e e-mail</td><td>Criação e autenticação de conta</td><td>Execução de contrato (Art. 7º, V)</td></tr>
+              <tr><td>Localização (GPS)</td><td>Exibir negócios e serviços próximos</td><td>Consentimento (Art. 7º, I)</td></tr>
+              <tr><td>Favoritos e histórico</td><td>Personalização da experiência</td><td>Legítimo interesse (Art. 7º, IX)</td></tr>
+              <tr><td>Avaliações publicadas</td><td>Exibição pública no perfil do negócio</td><td>Execução de contrato (Art. 7º, V)</td></tr>
+              <tr><td>Logs e dados de acesso</td><td>Segurança, diagnóstico e melhorias</td><td>Legítimo interesse (Art. 7º, IX)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:24px"><strong>Parceiros e anunciantes:</strong></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Dado</th><th>Finalidade</th><th>Base legal (LGPD)</th></tr></thead>
+            <tbody>
+              <tr><td>Dados do negócio (nome, endereço, CNPJ/CPF)</td><td>Criação do perfil público do anunciante</td><td>Execução de contrato (Art. 7º, V)</td></tr>
+              <tr><td>Dados de pagamento (tokenizados)</td><td>Processamento da assinatura</td><td>Execução de contrato (Art. 7º, V)</td></tr>
+              <tr><td>Métricas de perfil (visualizações, cliques)</td><td>Dashboard do parceiro</td><td>Legítimo interesse (Art. 7º, IX)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:16px">Coletamos também dados gerados automaticamente pelo dispositivo, como endereço IP, sistema operacional, versão do app e identificadores de sessão — usados exclusivamente para fins técnicos e de segurança.</p>
+      </section>
+
+      <section>
+        <h2>3. Finalidades do Tratamento</h2>
+        <p>Utilizamos seus dados pessoais para:</p>
+        <ul>
+          <li>Criar, autenticar e manter sua conta no Pratilera;</li>
+          <li>Exibir estabelecimentos, serviços e eventos próximos à sua localização;</li>
+          <li>Processar avaliações e gerenciar favoritos;</li>
+          <li>Processar pagamentos de assinaturas de parceiros;</li>
+          <li>Enviar comunicações transacionais (confirmações, alertas de conta);</li>
+          <li>Enviar comunicações de marketing, mediante consentimento prévio;</li>
+          <li>Melhorar continuamente a plataforma com base em dados agregados e anonimizados;</li>
+          <li>Cumprir obrigações legais e regulatórias.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>4. Compartilhamento de Dados</h2>
+        <p>Não vendemos seus dados pessoais a terceiros. Podemos compartilhá-los com:</p>
+        <ul>
+          <li><strong>Processadores de pagamento</strong> — para viabilizar transações de parceiros, sob padrões internacionais de segurança financeira;</li>
+          <li><strong>Provedores de infraestrutura em nuvem</strong> — para hospedagem e processamento dos dados, com cláusulas contratuais de proteção;</li>
+          <li><strong>Ferramentas analíticas</strong> — dados anonimizados e agregados para análise de uso da plataforma;</li>
+          <li><strong>Autoridades competentes</strong> — quando exigido por lei, ordem judicial ou para proteção de direitos.</li>
+        </ul>
+        <p>Todo compartilhamento é realizado com base em contratos que impõem obrigações de confidencialidade e proteção de dados equivalentes às nossas.</p>
+      </section>
+
+      <section>
+        <h2>5. Transferência Internacional de Dados</h2>
+        <p>Alguns de nossos provedores de infraestrutura e serviços operam fora do Brasil. Nesses casos, exigimos contratualmente que eles ofereçam o mesmo nível de proteção de dados previsto pela LGPD, garantindo a segurança das suas informações independentemente de onde sejam processadas.</p>
+      </section>
+
+      <section>
+        <h2>6. Retenção dos Dados</h2>
+        <p>Mantemos seus dados pelo tempo necessário ao cumprimento das finalidades descritas nesta Política ou pelo prazo mínimo exigido pela legislação aplicável (ex.: dados fiscais por 5 anos, conforme Código Tributário Nacional).</p>
+        <p>Após o encerramento da conta, os dados são anonimizados ou excluídos em até 90 dias, ressalvadas as hipóteses de guarda legal obrigatória ou litígio pendente.</p>
+      </section>
+
+      <section>
+        <h2>7. Seus Direitos como Titular</h2>
+        <p>Você tem direito a:</p>
+        <ul>
+          <li><strong>Confirmar</strong> a existência de tratamento dos seus dados;</li>
+          <li><strong>Acessar</strong> os dados que mantemos sobre você;</li>
+          <li><strong>Corrigir</strong> dados incompletos, inexatos ou desatualizados;</li>
+          <li><strong>Solicitar anonimização, bloqueio ou eliminação</strong> de dados desnecessários ou tratados em desconformidade com a LGPD;</li>
+          <li><strong>Portabilidade</strong> dos seus dados a outro fornecedor de serviço;</li>
+          <li><strong>Revogar o consentimento</strong> a qualquer tempo, sem prejuízo da licitude do tratamento realizado anteriormente;</li>
+          <li><strong>Opor-se</strong> ao tratamento realizado com fundamento em legítimo interesse;</li>
+          <li><strong>Peticionar à ANPD</strong> — Autoridade Nacional de Proteção de Dados.</li>
+        </ul>
+        <p>Para exercer seus direitos, envie sua solicitação para <a href="mailto:contato@pratilera.app.br">contato@pratilera.app.br</a>. Responderemos em até 15 dias úteis.</p>
+      </section>
+
+      <section>
+        <h2>8. Segurança dos Dados</h2>
+        <p>Adotamos medidas técnicas e organizacionais para proteger seus dados contra acesso não autorizado, perda ou divulgação indevida — incluindo criptografia de dados em trânsito, controle de acessos e monitoramento contínuo da plataforma.</p>
+        <p>Em caso de incidente de segurança que possa acarretar risco ou dano relevante ao titular, notificaremos a ANPD e os titulares afetados nos prazos previstos pela LGPD.</p>
+      </section>
+
+      <section>
+        <h2>9. Cookies e Tecnologias Similares</h2>
+        <p>Utilizamos cookies e tecnologias similares para o funcionamento da plataforma web e para análise de uso. Para mais detalhes, consulte nossa <a href="/cookies">Política de Cookies</a>.</p>
+      </section>
+
+      <section>
+        <h2>10. Menores de Idade</h2>
+        <p>O Pratilera não é destinado a menores de 18 anos. Não coletamos intencionalmente dados de menores. Caso identifiquemos que dados de menor foram coletados sem o consentimento dos responsáveis legais, procederemos à exclusão imediata.</p>
+      </section>
+
+      <section>
+        <h2>11. Encarregado de Dados (DPO)</h2>
+        <p>O encarregado pelo tratamento de dados pessoais da Keldra Tecnologia LTDA pode ser contactado pelo e-mail: <a href="mailto:contato@pratilera.app.br">contato@pratilera.app.br</a>.</p>
+      </section>
+
+      <section>
+        <h2>12. Alterações desta Política</h2>
+        <p>Podemos atualizar esta Política a qualquer momento. Mudanças relevantes serão comunicadas por notificação no Aplicativo ou por e-mail com antecedência mínima de 10 dias. O uso continuado da plataforma após a vigência das novas condições implica aceitação das alterações.</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Keldra Tecnologia LTDA · <a href="/">Início</a> · <a href="/termos">Termos de Uso</a> · <a href="/cookies">Cookies</a></p>
+    </footer>
+  </body>
+</html>

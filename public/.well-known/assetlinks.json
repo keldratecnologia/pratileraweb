@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.pratileraapp",
+      "sha256_cert_fingerprints": [
+        "9E:93:2A:99:DA:40:FD:E3:F5:05:11:F8:CD:0D:10:9E:F7:9F:19:CE:DF:D2:15:54:71:50:78:27:83:6F:ED:E0"
+      ]
+    }
+  }
+]

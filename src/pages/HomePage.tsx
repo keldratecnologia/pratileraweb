@@ -523,10 +523,10 @@ export default function HomePage() {
               </span>
             </a>
 
-            {/* Google Play */}
+            {/* Play Store */}
             <a
               href="#"
-              aria-label="Em breve no Google Play"
+              aria-label="Em breve na Play Store"
               className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl hover:scale-105 active:scale-95 transition-transform"
               style={{ backgroundColor: '#FFFFFF', boxShadow: '0 8px 24px rgba(0,0,0,0.15)', minWidth: '180px' }}
             >
@@ -534,8 +534,8 @@ export default function HomePage() {
                 <path d="M3.18 23.76c.37.2.8.22 1.2.04l13.11-7.44-2.83-2.83-11.48 10.23zm-1.46-20.5C1.48 3.68 1.5 4.2 1.75 4.64L13.2 12 1.72 19.36c-.25.44-.27.96-.02 1.38zM22.56 10.24l-2.56-1.45L16.88 12l3.12 3.12 2.56-1.45c.73-.41.73-1.5 0-1.91zM4.38.2C3.98.02 3.55.04 3.18.25L14.66 12 3.18 23.75c.37.21.8.23 1.2.05L19.12 13.5a1 1 0 000-1.75L4.38.2z"/>
               </svg>
               <span className="text-left">
-                <span className="block text-xs font-medium" style={{ color: '#768798' }}>Em breve no</span>
-                <span className="block text-base font-bold" style={{ color: '#1C3245' }}>Google Play</span>
+                <span className="block text-xs font-medium" style={{ color: '#768798' }}>Em breve na</span>
+                <span className="block text-base font-bold" style={{ color: '#1C3245' }}>Play Store</span>
               </span>
             </a>
           </div>

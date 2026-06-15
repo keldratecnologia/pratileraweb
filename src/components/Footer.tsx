@@ -65,6 +65,7 @@ export default function Footer() {
         {/* Linha legal */}
         <div className="mt-8 pt-6 border-t border-navy-700 text-center space-y-2">
           <div className="flex items-center justify-center gap-6 text-sm" style={{ color: '#A3B1BE' }}>
+            <Link to="/suporte" className="hover:text-white transition-colors">Suporte</Link>
             <Link to="/termos" className="hover:text-white transition-colors">Termos de Uso</Link>
             <Link to="/privacidade" className="hover:text-white transition-colors">Política de Privacidade</Link>
             <Link to="/cookies" className="hover:text-white transition-colors">Cookies</Link>

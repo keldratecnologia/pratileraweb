@@ -5,6 +5,7 @@ import TermosPage from './pages/TermosPage';
 import PrivacidadePage from './pages/PrivacidadePage';
 import CookiesPage from './pages/CookiesPage';
 import SuportePage from './pages/SuportePage';
+import ExcluirContaPage from './pages/ExcluirContaPage';
 import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/privacidade" element={<PrivacidadePage />} />
         <Route path="/cookies" element={<CookiesPage />} />
         <Route path="/suporte" element={<SuportePage />} />
+        <Route path="/excluir-conta" element={<ExcluirContaPage />} />
       </Routes>
     </BrowserRouter>
   );

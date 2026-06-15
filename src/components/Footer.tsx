@@ -69,6 +69,7 @@ export default function Footer() {
             <Link to="/termos" className="hover:text-white transition-colors">Termos de Uso</Link>
             <Link to="/privacidade" className="hover:text-white transition-colors">Política de Privacidade</Link>
             <Link to="/cookies" className="hover:text-white transition-colors">Cookies</Link>
+            <Link to="/excluir-conta" className="hover:text-white transition-colors">Excluir conta</Link>
           </div>
           <p className="text-xs" style={{ color: '#768798' }}>
             © {year} Keldra Tecnologia LTDA — CNPJ 66.274.795/0001-34. Todos os direitos reservados.

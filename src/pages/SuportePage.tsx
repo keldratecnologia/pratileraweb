@@ -108,8 +108,13 @@ export default function SuportePage() {
             estamos sempre expandindo para novas cidades.
           </Faq>
           <Faq question="Como excluo minha conta?">
-            Você pode solicitar a exclusão da sua conta e dos seus dados diretamente pelo
-            aplicativo ou enviando um e-mail para contato@pratilera.app.br.
+            Você pode excluir sua conta e seus dados diretamente pelo aplicativo (Perfil →
+            “Excluir minha conta”) ou por e-mail. Veja o passo a passo completo e o que
+            acontece com os seus dados na página{' '}
+            <Link to="/excluir-conta" className="font-semibold underline hover:opacity-70" style={{ color: '#FF7300' }}>
+              Exclusão de Conta e Dados
+            </Link>
+            .
           </Faq>
         </div>
       </Section>

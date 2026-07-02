@@ -209,13 +209,14 @@ export default function HomePage() {
           </p>
 
           <div className="flex justify-center">
-            <motion.span
+            <motion.a
+              href="/baixar"
               whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(28,50,69,0.25)', transition: { duration: 0.2, delay: 0 } }}
-              className="inline-flex items-center justify-center px-10 py-4 rounded-2xl text-white font-bold text-base shadow-lg cursor-default"
+              className="inline-flex items-center justify-center px-10 py-4 rounded-2xl text-white font-bold text-base shadow-lg cursor-pointer"
               style={{ backgroundColor: '#1C3245', fontFamily: 'var(--font-gotham)' }}
             >
-              Em Breve para iOS e Android
-            </motion.span>
+              Baixe agora — iOS e Android
+            </motion.a>
           </div>
 
           <motion.div
@@ -503,14 +504,16 @@ export default function HomePage() {
             Baixe o Pratilera agora
           </h2>
           <p className="text-base mb-10" style={{ color: '#2B3B4A', opacity: 0.85 }}>
-            Gratuito para consumidores. Disponível para iOS e Android em breve.
+            Gratuito para consumidores. Disponível para iOS e Android.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {/* App Store */}
             <a
-              href="#"
-              aria-label="Em breve na App Store"
+              href="https://apps.apple.com/br/app/id6776366689"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Baixar na App Store"
               className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl hover:scale-105 active:scale-95 transition-transform"
               style={{ backgroundColor: '#FFFFFF', boxShadow: '0 8px 24px rgba(0,0,0,0.15)', minWidth: '180px' }}
             >
@@ -518,15 +521,17 @@ export default function HomePage() {
                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
               </svg>
               <span className="text-left">
-                <span className="block text-xs font-medium" style={{ color: '#768798' }}>Em breve na</span>
+                <span className="block text-xs font-medium" style={{ color: '#768798' }}>Baixar na</span>
                 <span className="block text-base font-bold" style={{ color: '#1C3245' }}>App Store</span>
               </span>
             </a>
 
             {/* Play Store */}
             <a
-              href="#"
-              aria-label="Em breve na Play Store"
+              href="https://play.google.com/store/apps/details?id=com.pratileraapp"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Baixar na Play Store"
               className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl hover:scale-105 active:scale-95 transition-transform"
               style={{ backgroundColor: '#FFFFFF', boxShadow: '0 8px 24px rgba(0,0,0,0.15)', minWidth: '180px' }}
             >
@@ -534,7 +539,7 @@ export default function HomePage() {
                 <path d="M3.18 23.76c.37.2.8.22 1.2.04l13.11-7.44-2.83-2.83-11.48 10.23zm-1.46-20.5C1.48 3.68 1.5 4.2 1.75 4.64L13.2 12 1.72 19.36c-.25.44-.27.96-.02 1.38zM22.56 10.24l-2.56-1.45L16.88 12l3.12 3.12 2.56-1.45c.73-.41.73-1.5 0-1.91zM4.38.2C3.98.02 3.55.04 3.18.25L14.66 12 3.18 23.75c.37.21.8.23 1.2.05L19.12 13.5a1 1 0 000-1.75L4.38.2z"/>
               </svg>
               <span className="text-left">
-                <span className="block text-xs font-medium" style={{ color: '#768798' }}>Em breve na</span>
+                <span className="block text-xs font-medium" style={{ color: '#768798' }}>Baixar na</span>
                 <span className="block text-base font-bold" style={{ color: '#1C3245' }}>Play Store</span>
               </span>
             </a>

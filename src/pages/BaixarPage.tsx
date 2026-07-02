@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 // ── Configuração: vire para true quando cada loja aprovar o app ──────────────
 const IOS_URL = 'https://apps.apple.com/br/app/id6776366689';
 const ANDROID_URL = 'https://play.google.com/store/apps/details?id=com.pratileraapp';
-const IOS_LIVE = false;      // App Store aprovada? -> true
-const ANDROID_LIVE = false;  // Play Store aprovada? -> true
+const IOS_LIVE = true;      // App Store aprovada? -> true
+const ANDROID_LIVE = true;  // Play Store aprovada? -> true
 
 const ua = typeof navigator !== 'undefined' ? navigator.userAgent : '';
 const isIOS = /iphone|ipad|ipod/i.test(ua);

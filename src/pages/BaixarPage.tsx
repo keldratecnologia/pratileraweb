@@ -56,12 +56,30 @@ const PlayIcon = (
   </svg>
 );
 
+// Se o aparelho tem loja no ar, a página vai redirecionar — mostramos só um
+// loading limpo ("Abrindo a loja…") em vez do flash da página inteira.
+const willRedirect = (isIOS && IOS_LIVE) || (isAndroid && ANDROID_LIVE);
+
 export default function BaixarPage() {
   // Redireciona automaticamente para a loja do aparelho (se já estiver no ar).
   useEffect(() => {
     if (isIOS && IOS_LIVE) window.location.replace(IOS_URL);
     else if (isAndroid && ANDROID_LIVE) window.location.replace(ANDROID_URL);
   }, []);
+
+  // Tela de transição enquanto o redirecionamento acontece.
+  if (willRedirect) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center px-6 text-center" style={{ backgroundColor: '#1C3245' }}>
+        <img src="/mini-logo.png" alt="Pratilera" style={{ width: 64, height: 64, filter: 'brightness(0) invert(1)' }} className="mb-6 animate-pulse" />
+        <p className="text-base font-medium" style={{ color: '#FFFFFF' }}>Abrindo a loja…</p>
+        <p className="text-sm mt-2" style={{ color: '#A3B1BE' }}>
+          Se não abrir automaticamente,{' '}
+          <a href={isIOS ? IOS_URL : ANDROID_URL} className="underline" style={{ color: '#FF7300' }}>toque aqui</a>.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 py-16 text-center" style={{ backgroundColor: '#1C3245' }}>

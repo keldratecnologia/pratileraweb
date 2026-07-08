@@ -226,16 +226,16 @@ export default function HomePage() {
             className="mt-8 text-center"
           >
             <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#1C3245', opacity: 0.6 }}>
-              Iniciando em
+              Disponível em
             </p>
             <div className="flex items-center justify-center gap-2 flex-wrap">
-              {['Capim Branco', 'Matozinhos', 'Pedro Leopoldo'].map((city, i) => (
+              {['Capim Branco', 'Confins', 'Funilândia', 'Lagoa Santa', 'Matozinhos', 'Pedro Leopoldo', 'Prudente de Morais', 'São José da Lapa', 'Vespasiano'].map((city, i) => (
                 <motion.div
                   key={city}
                   initial={{ opacity: 0, scale: 0.85 }}
                   animate={{ opacity: 1, scale: 1 }}
                   whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(28,50,69,0.10)', transition: { duration: 0.2, delay: 0 } }}
-                  transition={{ delay: 0.6 + i * 0.1, duration: 0.35 }}
+                  transition={{ delay: 0.6 + i * 0.05, duration: 0.35 }}
                   className="px-4 py-1.5 rounded-full text-sm font-semibold cursor-default inline-block"
                   style={{ backgroundColor: 'rgba(28,50,69,0.15)', color: '#FFFFFF' }}
                 >

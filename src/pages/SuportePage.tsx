@@ -104,7 +104,8 @@ export default function SuportePage() {
             seu perfil. Em caso de dúvidas, fale com a gente pelos canais acima.
           </Faq>
           <Faq question="Em quais cidades o Pratilera está disponível?">
-            No momento, atendemos Capim Branco, Matozinhos e Pedro Leopoldo (MG), e
+            Atendemos Capim Branco, Confins, Funilândia, Lagoa Santa, Matozinhos,
+            Pedro Leopoldo, Prudente de Morais, São José da Lapa e Vespasiano (MG), e
             estamos sempre expandindo para novas cidades.
           </Faq>
           <Faq question="Como excluo minha conta?">

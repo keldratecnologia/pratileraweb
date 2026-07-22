@@ -229,7 +229,7 @@ export default function HomePage() {
               Disponível em
             </p>
             <div className="flex items-center justify-center gap-2 flex-wrap">
-              {['Capim Branco', 'Confins', 'Funilândia', 'Lagoa Santa', 'Matozinhos', 'Pedro Leopoldo', 'Prudente de Morais', 'São José da Lapa', 'Vespasiano'].map((city, i) => (
+              {['Belo Horizonte', 'Capim Branco', 'Confins', 'Funilândia', 'Lagoa Santa', 'Matozinhos', 'Pedro Leopoldo', 'Prudente de Morais', 'São José da Lapa', 'Vespasiano'].map((city, i) => (
                 <motion.div
                   key={city}
                   initial={{ opacity: 0, scale: 0.85 }}

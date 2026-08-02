@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, CheckCircle, User, Store, Mic, Landmark } from 'lucide-react';
+import { ArrowLeft, CheckCircle, User, Store, Mic } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -9,36 +10,38 @@ const PRICING_PLANS = [
     icon: User,
     type: 'Profissional Autônomo',
     subtitle: 'CPF · MEI, freelancers e autônomos',
-    pix: 27,
-    card: 38,
+    monthly: 24.9,
+    yearlyMonthly: 19.9,
+    yearlyTotal: 238.8,
   },
   {
     icon: Store,
     type: 'Estabelecimento',
     subtitle: 'CNPJ · comércios e empresas',
-    pix: 57,
-    card: 68,
-  },
-  {
-    icon: Mic,
-    type: 'Evento / Show',
-    subtitle: 'Festas, feiras e atrações locais',
-    pix: 87,
-    card: 98,
-    footnote: true,
+    monthly: 49.9,
+    yearlyMonthly: 39.9,
+    yearlyTotal: 478.8,
   },
 ];
 
+const EVENT_PRICE = 79.9;
+
+const fmt = (v: number) => v.toFixed(2).replace('.', ',');
+
+/* Só o que o plano pago acrescenta. A lista antiga misturava as duas coisas —
+   contato por WhatsApp, mapa e avaliações existem no gratuito também, e
+   cobrá-los na comunicação é prometer o que a pessoa já tem. */
 const INCLUDED = [
-  'Perfil profissional com fotos, descrição e horários',
-  'Botão de contato direto via WhatsApp',
-  'Localização integrada com Google Maps',
-  'Sistema de avaliações e reputação',
-  'Dashboard com métricas de visitas e leads',
+  'Suas fotos no perfil e nos resultados de busca',
+  'Selo de verificado ao lado do seu nome',
+  'Aparecer antes de quem não assina',
+  'Relatório de visitas e de contatos recebidos',
   'Resposta pública às avaliações dos clientes',
 ];
 
 export default function PlanosPrecosPage() {
+  const [cycle, setCycle] = useState<'monthly' | 'yearly'>('monthly');
+
   return (
     <div className="min-h-screen bg-bg font-calibri overflow-x-hidden">
       <Navbar />
@@ -81,7 +84,8 @@ export default function PlanosPrecosPage() {
             Planos e Preços
           </h1>
           <p className="text-base leading-relaxed" style={{ color: '#2B3B4A' }}>
-            Simples, transparente e sem surpresas. Cancele quando quiser.
+            Anunciar é grátis. Os planos abaixo são para quem quer aparecer
+            mais. Cancele quando quiser.
           </p>
         </motion.div>
 
@@ -91,10 +95,83 @@ export default function PlanosPrecosPage() {
       <section className="py-20 px-6 bg-bg">
         <div className="max-w-4xl mx-auto">
 
+          {/* O GRATUITO vem primeiro e fora do seletor de ciclo: ele não tem
+              ciclo, e escondê-lo depois dos pagos faria a página repetir a
+              mensagem antiga de que anunciar exigia pagar — que era o que o
+              site dizia até hoje, e deixou de ser verdade com o freemium. */}
+          <div
+            className="rounded-3xl p-6 sm:p-8 mb-10"
+            style={{ backgroundColor: '#FFFFFF' }}
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div>
+                <span
+                  className="text-xs font-bold tracking-widest uppercase block mb-2"
+                  style={{ color: '#FF7300', fontFamily: 'var(--font-gotham)' }}
+                >
+                  Comece de graça
+                </span>
+                <h3
+                  className="text-xl font-bold mb-1"
+                  style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245' }}
+                >
+                  Seu negócio no ar, sem mensalidade
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: '#495E70' }}>
+                  Cadastro, perfil com nome, contato, endereço e horários, e
+                  aparecer nas buscas da sua cidade.
+                </p>
+              </div>
+              <div className="text-right shrink-0">
+                <span
+                  className="text-3xl font-bold block"
+                  style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245' }}
+                >
+                  R$ 0
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Seletor Mensal / Anual */}
+          <div className="flex justify-center mb-8">
+            <div
+              className="inline-flex p-1 rounded-2xl"
+              style={{ backgroundColor: '#F3F4F6' }}
+            >
+              {(['monthly', 'yearly'] as const).map((c) => (
+                <button
+                  key={c}
+                  onClick={() => setCycle(c)}
+                  className="relative px-6 py-2.5 rounded-xl text-sm font-bold transition-colors"
+                  style={{
+                    fontFamily: 'var(--font-gotham)',
+                    backgroundColor: cycle === c ? '#FF7300' : 'transparent',
+                    color: cycle === c ? '#FFFFFF' : '#495E70',
+                  }}
+                >
+                  {c === 'monthly' ? 'Mensal' : 'Anual'}
+                  {c === 'yearly' && (
+                    <span
+                      className="ml-2 text-[10px] font-bold px-1.5 py-0.5 rounded-full align-middle"
+                      style={{
+                        backgroundColor: cycle === 'yearly' ? 'rgba(255,255,255,0.25)' : '#06C1B615',
+                        color: cycle === 'yearly' ? '#FFFFFF' : '#06C1B6',
+                      }}
+                    >
+                      -20%
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Cards pagos */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-4">
             {PRICING_PLANS.map((plan, i) => {
               const Icon = plan.icon;
+              const price = cycle === 'monthly' ? plan.monthly : plan.yearlyMonthly;
               return (
                 <motion.div
                   key={plan.type}
@@ -134,65 +211,71 @@ export default function PlanosPrecosPage() {
                         className="text-3xl font-bold"
                         style={{ color: '#FF7300', fontFamily: 'var(--font-gotham)' }}
                       >
-                        R${plan.pix}{plan.footnote && <sup style={{ fontSize: '14px' }}>*</sup>}
+                        R${fmt(price)}
                       </span>
                       <span className="text-sm" style={{ color: '#495E70' }}>/mês</span>
                     </div>
                     <p className="text-xs" style={{ color: '#9CA3AF' }}>
-                      no Pix · R${plan.card}/mês no cartão
+                      {cycle === 'monthly'
+                        ? 'no Pix ou no cartão, mesmo valor'
+                        : `Total anual: R$${fmt(plan.yearlyTotal)} (1x)`}
                     </p>
                   </div>
                 </motion.div>
               );
             })}
+
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(28,50,69,0.10)' }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: 0.16 }}
+              className="bg-white rounded-2xl p-7 border flex flex-col gap-4 items-center text-center"
+              style={{
+                borderColor: '#E8EEF3',
+                borderTopWidth: '3px',
+                borderTopColor: '#FF7300',
+                boxShadow: '0 2px 8px rgba(28,50,69,0.06)',
+              }}
+            >
+              <div
+                className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ backgroundColor: '#FFF4EC' }}
+              >
+                <Mic size={20} color="#FF7300" />
+              </div>
+              <div>
+                <h3
+                  className="text-base font-bold mb-1"
+                  style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245' }}
+                >
+                  Evento / Show
+                </h3>
+                <p className="text-sm" style={{ color: '#495E70' }}>
+                  Festas, feiras e atrações locais
+                </p>
+              </div>
+              <div className="mt-auto pt-2" style={{ borderTop: '1px solid #F3F4F6' }}>
+                <div className="flex items-baseline justify-center gap-1 mb-1">
+                  <span
+                    className="text-3xl font-bold"
+                    style={{ color: '#FF7300', fontFamily: 'var(--font-gotham)' }}
+                  >
+                    R${fmt(EVENT_PRICE)}
+                  </span>
+                </div>
+                <p className="text-xs" style={{ color: '#9CA3AF' }}>
+                  cobrança única, sem mensalidade
+                </p>
+              </div>
+            </motion.div>
           </div>
 
-          {/* Serviço público — gratuito */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(28,50,69,0.10)' }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: 0.28 }}
-            className="bg-white rounded-2xl p-7 flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left"
-            style={{
-              borderTop: '3px solid #06C1B6',
-              border: '1px solid #E8EEF3',
-              borderTopWidth: '3px',
-              borderTopColor: '#06C1B6',
-              boxShadow: '0 2px 8px rgba(28,50,69,0.06)',
-            }}
-          >
-            <div
-              className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-              style={{ backgroundColor: '#06C1B615' }}
-            >
-              <Landmark size={20} color="#06C1B6" />
-            </div>
-            <div className="flex-1">
-              <h3
-                className="text-sm font-bold"
-                style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245' }}
-              >
-                Órgãos Públicos
-              </h3>
-              <p className="text-xs mt-0.5 leading-relaxed" style={{ color: '#495E70' }}>
-                Prefeituras, Hospitais, Escolas e demais órgãos públicos — visibilidade gratuita para auxiliar a população.
-              </p>
-            </div>
-            <span
-              className="text-base font-bold flex-shrink-0"
-              style={{ color: '#06C1B6', fontFamily: 'var(--font-gotham)' }}
-            >
-              Gratuito
-            </span>
-          </motion.div>
-
           <p className="text-center text-xs mt-5" style={{ color: '#9CA3AF' }}>
-            Assinatura mensal recorrente, sem fidelidade. Cancele quando quiser.
-          </p>
-          <p className="text-center text-xs mt-2" style={{ color: '#9CA3AF' }}>
-            * Eventos com duração superior a 30 dias são cobrados proporcionalmente aos dias restantes.
+            {cycle === 'monthly'
+              ? 'Assinatura mensal recorrente, sem fidelidade. Cancele quando quiser.'
+              : 'Assinatura anual recorrente, cobrada em 1x. Cancele quando quiser.'}
           </p>
         </div>
       </section>
@@ -204,13 +287,13 @@ export default function PlanosPrecosPage() {
             className="text-xs font-bold tracking-widest uppercase block mb-3"
             style={{ color: '#FF7300', fontFamily: 'var(--font-gotham)' }}
           >
-            Todos os planos incluem
+            Nos planos pagos
           </span>
           <h2
             className="text-xl sm:text-2xl font-bold mb-8"
             style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245' }}
           >
-            Tudo que você precisa, desde o primeiro dia
+            O que você ganha assinando
           </h2>
           <div className="inline-flex flex-col gap-3 text-left mx-auto">
             {INCLUDED.map((item, i) => (

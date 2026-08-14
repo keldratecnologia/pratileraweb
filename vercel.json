@@ -6,8 +6,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/privacidade", "destination": "/privacidade.html" },
-    { "source": "/termos", "destination": "/termos.html" },
     { "source": "/business/:slug", "destination": "/api/business/:slug" },
     { "source": "/((?!api/|.well-known/).*)", "destination": "/index.html" }
   ]

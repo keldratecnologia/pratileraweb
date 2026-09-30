@@ -1,30 +1,31 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, CheckCircle, User, Store, Mic } from 'lucide-react';
+import { ArrowLeft, CheckCircle, Store, Mic } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
+/* Preço ÚNICO para autônomo e empresa desde 30/09/2026 — antes eram dois
+   cartões (CPF e CNPJ, este pagando o dobro). Com o mesmo valor, dois cartões
+   iguais só fariam a pessoa procurar a diferença que não existe.
+   ⚠️ Espelho de functions/src/payments.ts (quem cobra) e src/constants/pricing.ts
+   do app. Mudou aqui, mude lá. */
 const PRICING_PLANS = [
   {
-    icon: User,
-    type: 'Profissional Autônomo',
-    subtitle: 'CPF · MEI, freelancers e autônomos',
-    monthly: 24.9,
-    yearlyMonthly: 19.9,
-    yearlyTotal: 238.8,
-  },
-  {
     icon: Store,
-    type: 'Estabelecimento',
-    subtitle: 'CNPJ · comércios e empresas',
-    monthly: 49.9,
-    yearlyMonthly: 39.9,
-    yearlyTotal: 478.8,
+    type: 'Assinatura Pratilera',
+    subtitle: 'Autônomos, MEI e empresas · mesmo preço',
+    monthly: 19.9,
+    yearlyMonthly: 9.9,
+    yearlyTotal: 118.8,
   },
 ];
 
-const EVENT_PRICE = 79.9;
+const EVENT_PRICE = 39.9;
+
+/* Calculado, não escrito à mão: o "-20%" fixo teria sobrevivido à troca de
+   preço anunciando um desconto que já não existia. */
+const DESCONTO_ANUAL = Math.round((1 - PRICING_PLANS[0].yearlyMonthly / PRICING_PLANS[0].monthly) * 100);
 
 const fmt = (v: number) => v.toFixed(2).replace('.', ',');
 
@@ -159,7 +160,7 @@ export default function PlanosPrecosPage() {
                         color: cycle === 'yearly' ? '#FFFFFF' : '#06C1B6',
                       }}
                     >
-                      -20%
+                      -{DESCONTO_ANUAL}%
                     </span>
                   )}
                 </button>
@@ -168,7 +169,7 @@ export default function PlanosPrecosPage() {
           </div>
 
           {/* Cards pagos */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-4 max-w-3xl mx-auto">
             {PRICING_PLANS.map((plan, i) => {
               const Icon = plan.icon;
               const price = cycle === 'monthly' ? plan.monthly : plan.yearlyMonthly;

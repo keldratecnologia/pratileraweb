@@ -37,7 +37,7 @@ export interface LegalSection {
   items?: LegalItem[];
 }
 
-export const LEGAL_LAST_UPDATED = '2 de agosto de 2026';
+export const LEGAL_LAST_UPDATED = '7 de outubro de 2026';
 
 // ─── Termos de Uso ───────────────────────────────────────────────────────────
 
@@ -134,6 +134,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
       '8.6. A divulgação de evento é contratação avulsa, sem renovação automática. O prazo de divulgação começa a contar a partir da confirmação do pagamento, e não da aprovação prevista na seção 4.',
       '8.7. Os valores e condições dos Planos podem ser alterados mediante aviso prévio de 30 (trinta) dias, sem afetar ciclo já pago.',
       '8.8. Em caso de inadimplência, o acesso às funcionalidades pagas é suspenso até a regularização, permanecendo o Perfil publicado na forma do item 8.2.',
+      '8.9. Nas listas e buscas, os Perfis com Plano ativo aparecem antes dos demais. Dentro de cada grupo, a ordem considera critérios como as avaliações recebidas, a proximidade (quando o Usuário permite o uso da localização), a administração do Perfil pelo próprio responsável e um sorteio entre Perfis em condições equivalentes, renovado a cada acesso. Quando o Usuário escolhe ordenar por distância ou por avaliação, prevalece a escolha dele. Os critérios podem ser ajustados para melhorar a experiência, e a posição de um Perfil não representa avaliação de qualidade pelo Pratilera.',
     ],
   },
   {
@@ -246,7 +247,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
       { text: 'Versão do aplicativo e informações de conexão (endereço IP).' },
       { text: 'Token de notificação, necessário para enviar avisos ao seu aparelho.' },
       { text: 'Dados de uso: telas acessadas, buscas realizadas, cliques e interações. Para Anunciantes, contabilizamos visitas ao Perfil e cliques em contato, exibidos como métricas.' },
-      { text: 'Localização aproximada, apenas mediante autorização expressa, e exclusivamente para identificar em qual das cidades atendidas você está e deixá-la pré-selecionada. A autorização pode ser recusada sem perda de funcionalidades, e a localização não é usada para rastrear deslocamento nem para publicidade.' },
+      { text: 'Localização aproximada, apenas mediante autorização expressa, e exclusivamente para identificar em qual das cidades atendidas você está e deixá-la pré-selecionada, mostrar a distância até os negócios e considerar a proximidade na ordem das listas. O cálculo é feito no próprio aparelho, e a localização não é enviada aos nossos servidores. A autorização pode ser recusada sem perda de funcionalidades, e a localização não é usada para rastrear deslocamento nem para publicidade.' },
     ],
   },
   {
@@ -261,7 +262,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
       { text: 'Análise de uso para melhoria contínua do produto — Legítimo interesse (Art. 7º, IX).' },
       { text: 'Prevenção a fraudes e segurança da Plataforma — Legítimo interesse e cumprimento de obrigação legal.' },
       { text: 'Comunicações de marketing e novidades — Consentimento (Art. 7º, I), revogável a qualquer tempo.' },
-      { text: 'Pré-seleção da cidade a partir da localização — Consentimento (Art. 7º, I), revogável nos ajustes do aparelho.' },
+      { text: 'Pré-seleção da cidade, distância e proximidade nas listas a partir da localização — Consentimento (Art. 7º, I), revogável nos ajustes do aparelho.' },
       { text: 'Cumprimento de obrigações legais e regulatórias — Obrigação legal (Art. 7º, II).' },
     ],
   },

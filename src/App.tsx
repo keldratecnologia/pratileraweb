@@ -8,6 +8,7 @@ import SuportePage from './pages/SuportePage';
 import ExcluirContaPage from './pages/ExcluirContaPage';
 import BaixarPage from './pages/BaixarPage';
 import ScrollToTop from './components/ScrollToTop';
+import AvisoCookies from './components/AvisoCookies';
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/excluir-conta" element={<ExcluirContaPage />} />
         <Route path="/baixar" element={<BaixarPage />} />
       </Routes>
+      <AvisoCookies />
     </BrowserRouter>
   );
 }

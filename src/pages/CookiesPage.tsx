@@ -27,7 +27,7 @@ export default function CookiesPage() {
     <LegalLayout
       title="Política de Cookies"
       subtitle="Como utilizamos cookies e tecnologias similares no site e no aplicativo Pratilera."
-      lastUpdated="19 de maio de 2026"
+      lastUpdated="13 de outubro de 2026"
     >
 
       <Section title="1. O que são Cookies?">
@@ -40,16 +40,16 @@ export default function CookiesPage() {
       </Section>
 
       <Section title="2. Cookies que Utilizamos">
-        <p>Classificamos os cookies em duas categorias:</p>
+        <p>Classificamos os cookies do site em duas categorias:</p>
 
         <div className="mt-4 space-y-6">
-          {/* Essenciais */}
+          {/* Necessários */}
           <div>
             <h3 className="text-sm font-bold mb-2" style={{ color: '#1C3245' }}>
-              Cookies Estritamente Necessários
+              Necessários
             </h3>
             <p className="mb-3">
-              Indispensáveis para o funcionamento básico da plataforma. Não podem ser desativados, pois sem eles o site não funciona corretamente. Não coletam informações pessoais identificáveis.
+              Guardam a sua escolha sobre cookies, para o aviso não aparecer em toda visita. Não identificam você e não podem ser desativados.
             </p>
             <div className="overflow-x-auto rounded-xl border" style={{ borderColor: '#E8EEF3' }}>
               <table className="w-full">
@@ -62,21 +62,19 @@ export default function CookiesPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  <CookieRow name="session_id" type="1ª parte" purpose="Manter a sessão autenticada do usuário" duration="Sessão" />
-                  <CookieRow name="csrf_token" type="1ª parte" purpose="Proteção contra ataques de falsificação de requisição" duration="Sessão" />
-                  <CookieRow name="cookie_consent" type="1ª parte" purpose="Armazenar a preferência de consentimento de cookies" duration="12 meses" />
+                  <CookieRow name="cookie_consent" type="1ª parte" purpose="Guardar se você aceitou ou recusou os cookies de medição e publicidade" duration="Até você mudar a escolha ou limpar os dados do navegador" />
                 </tbody>
               </table>
             </div>
           </div>
 
-          {/* Funcionais */}
+          {/* Medição e publicidade */}
           <div>
             <h3 className="text-sm font-bold mb-2" style={{ color: '#1C3245' }}>
-              Cookies Funcionais
+              Medição e publicidade (só com o seu consentimento)
             </h3>
             <p className="mb-3">
-              Melhoram a experiência ao lembrar preferências, como cidade selecionada e configurações de interface. Podem ser desativados, mas isso pode impactar a experiência de uso.
+              Carregados pelo Google Tag Manager apenas depois que você clica em "Aceitar". Servem para contar as visitas, entender como o site é usado e medir o resultado dos anúncios do Pratilera. Conforme as campanhas ativas, podem ser usados:
             </p>
             <div className="overflow-x-auto rounded-xl border" style={{ borderColor: '#E8EEF3' }}>
               <table className="w-full">
@@ -89,8 +87,9 @@ export default function CookiesPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  <CookieRow name="pref_city" type="1ª parte" purpose="Cidade selecionada pelo usuário" duration="30 dias" />
-                  <CookieRow name="pref_theme" type="1ª parte" purpose="Preferências de exibição da interface" duration="12 meses" />
+                  <CookieRow name="_ga, _ga_*" type="3ª parte (Google Analytics)" purpose="Contar visitas e entender como o site é usado" duration="Até 2 anos" />
+                  <CookieRow name="_gcl_au" type="3ª parte (Google Ads)" purpose="Medir o resultado dos anúncios do Pratilera no Google" duration="90 dias" />
+                  <CookieRow name="_fbp" type="3ª parte (Meta)" purpose="Medir os anúncios do Pratilera no Facebook e no Instagram e mostrá-los a quem já visitou o site" duration="90 dias" />
                 </tbody>
               </table>
             </div>
@@ -100,19 +99,19 @@ export default function CookiesPage() {
 
       <Section title="3. Cookies de Terceiros">
         <p>
-          Atualmente, o Pratilera utiliza apenas cookies próprios (1ª parte). Caso no futuro integremos ferramentas de terceiros — como plataformas de análise de uso — esta política será atualizada e você será informado.
+          Quando você aceita, o Google e o Meta podem receber dados da sua navegação no site, como as páginas visitadas, o tipo de dispositivo e os identificadores desses cookies. Eles tratam esses dados conforme as próprias políticas: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="font-semibold underline hover:opacity-70" style={{ color: '#FF7300' }}>Google</a> e <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener noreferrer" className="font-semibold underline hover:opacity-70" style={{ color: '#FF7300' }}>Meta</a>.
         </p>
         <p>
-          O Pratilera não utiliza cookies de publicidade comportamental ou de rastreamento para fins de anúncios segmentados.
+          Se você recusar, nenhuma dessas ferramentas é carregada. O Pratilera não vende dados pessoais.
         </p>
       </Section>
 
       <Section title="4. Como Gerenciar seus Cookies">
         <p>
-          Na primeira visita ao site, você será apresentado a um banner de consentimento que permite aceitar ou recusar os cookies não essenciais. Você pode alterar sua preferência a qualquer momento.
+          Na primeira visita, o site mostra um aviso para você aceitar ou recusar os cookies de medição e publicidade. Para mudar a escolha depois, use o link "Preferências de cookies" no rodapé do site.
         </p>
         <p>
-          Além disso, você pode gerenciar ou excluir cookies diretamente pelo seu navegador:
+          Você também pode apagar ou bloquear cookies pelo navegador:
         </p>
         <ul className="list-disc pl-5 space-y-1">
           <li><strong style={{ color: '#1C3245' }}>Google Chrome:</strong> Configurações → Privacidade e segurança → Cookies e outros dados do site</li>
@@ -121,10 +120,7 @@ export default function CookiesPage() {
           <li><strong style={{ color: '#1C3245' }}>Microsoft Edge:</strong> Configurações → Cookies e permissões do site</li>
         </ul>
         <p>
-          Atenção: desativar cookies essenciais pode impedir o funcionamento correto do site. Cookies analíticos podem ser desativados sem impacto na experiência principal.
-        </p>
-        <p>
-          Para o Aplicativo móvel, você pode revogar permissões de rastreamento nas configurações do seu dispositivo iOS (Privacidade → Rastreamento) ou Android (Configurações → Privacidade).
+          O aplicativo Pratilera não usa cookies. Ele usa o Google Analytics para Firebase para estatísticas de uso do app, como descrito na Política de Privacidade, e não usa dados de navegação para publicidade.
         </p>
       </Section>
 

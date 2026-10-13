@@ -37,7 +37,7 @@ export interface LegalSection {
   items?: LegalItem[];
 }
 
-export const LEGAL_LAST_UPDATED = '7 de outubro de 2026';
+export const LEGAL_LAST_UPDATED = '13 de outubro de 2026';
 
 // ─── Termos de Uso ───────────────────────────────────────────────────────────
 
@@ -282,6 +282,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
     items: [
       { text: 'Google (Firebase): autenticação, banco de dados, armazenamento de arquivos, notificações e análise de uso.' },
       { text: 'Google (Maps): exibição de mapas e conversão de endereço em coordenadas.' },
+      { text: 'Google (Tag Manager, Analytics e Ads) e Meta: medição de visitas e de anúncios no site pratilera.app.br, apenas se você aceitar os cookies de medição e publicidade.' },
       { text: 'Apple: quando o Usuário utiliza o Sign in with Apple.' },
       { text: 'Asaas Gestão Financeira S.A.: processamento de cobranças, assinaturas e devoluções.' },
       { text: 'Provedor de envio de e-mails transacionais.' },

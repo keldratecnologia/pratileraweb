@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { GTM_ID, reabrirPreferencias } from '../lib/consentimento';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -64,11 +65,16 @@ export default function Footer() {
 
         {/* Linha legal */}
         <div className="mt-8 pt-6 border-t border-navy-700 text-center space-y-2">
-          <div className="flex items-center justify-center gap-6 text-sm" style={{ color: '#A3B1BE' }}>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm" style={{ color: '#A3B1BE' }}>
             <Link to="/suporte" className="hover:text-white transition-colors">Suporte</Link>
             <Link to="/termos" className="hover:text-white transition-colors">Termos de Uso</Link>
             <Link to="/privacidade" className="hover:text-white transition-colors">Política de Privacidade</Link>
             <Link to="/cookies" className="hover:text-white transition-colors">Cookies</Link>
+            {GTM_ID && (
+              <button type="button" onClick={reabrirPreferencias} className="hover:text-white transition-colors cursor-pointer">
+                Preferências de cookies
+              </button>
+            )}
             <Link to="/excluir-conta" className="hover:text-white transition-colors">Excluir conta</Link>
           </div>
           <p className="text-xs" style={{ color: '#768798' }}>

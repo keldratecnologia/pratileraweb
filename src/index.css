@@ -1,51 +1,37 @@
 @import "tailwindcss";
 
+/* Plus Jakarta Sans, a fonte da marca (a mesma do app e das peças),
+   hospedada no próprio site: sem Google Fonts, nenhum terceiro recebe o IP
+   de quem visita antes do aviso de cookies. */
 @font-face {
-  font-family: 'Gotham';
-  src: url('/fonts/Gotham-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-  unicode-range: U+0020-U+007E;
-}
-
-@font-face {
-  font-family: 'Calibri';
-  src: url('/fonts/Calibri-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Calibri';
-  src: url('/fonts/Calibri-Regular.ttf') format('truetype');
+  font-family: 'Plus Jakarta Sans';
+  src: url('/fonts/PlusJakartaSans-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Calibri';
-  src: url('/fonts/Calibri-Italic.ttf') format('truetype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Calibri';
-  src: url('/fonts/Calibri-Bold.ttf') format('truetype');
-  font-weight: 700;
+  font-family: 'Plus Jakarta Sans';
+  src: url('/fonts/PlusJakartaSans-Medium.woff2') format('woff2');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Calibri';
-  src: url('/fonts/Calibri-BoldItalic.ttf') format('truetype');
+  font-family: 'Plus Jakarta Sans';
+  src: url('/fonts/PlusJakartaSans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('/fonts/PlusJakartaSans-Bold.woff2') format('woff2');
   font-weight: 700;
-  font-style: italic;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -81,9 +67,9 @@
   --color-bg-tertiary: #F3F4F6;
 
   /* Tipografia */
-  --font-gotham: 'Inter', sans-serif;
-  --font-display: 'Inter', sans-serif;
-  --font-calibri: 'Inter', 'Calibri', system-ui, sans-serif;
+  --font-gotham: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-calibri: 'Plus Jakarta Sans', system-ui, sans-serif;
 
   /* Status */
   --color-success: #10B981;

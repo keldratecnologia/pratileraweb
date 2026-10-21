@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { definirPagina } from '../lib/seo';
 import { Link } from 'react-router-dom';
 
 // ── Configuração: vire para true quando cada loja aprovar o app ──────────────
@@ -63,6 +64,7 @@ const willRedirect = (isIOS && IOS_LIVE) || (isAndroid && ANDROID_LIVE);
 export default function BaixarPage() {
   // Redireciona automaticamente para a loja do aparelho (se já estiver no ar).
   useEffect(() => {
+    definirPagina({ titulo: 'Baixar o app | Pratilera', descricao: 'Baixe o Pratilera grátis na App Store ou na Play Store.', caminho: '/baixar' });
     if (isIOS && IOS_LIVE) window.location.replace(IOS_URL);
     else if (isAndroid && ANDROID_LIVE) window.location.replace(ANDROID_URL);
   }, []);
@@ -91,7 +93,7 @@ export default function BaixarPage() {
         Baixe o Pratilera
       </h1>
       <p className="text-base mb-10 max-w-md" style={{ color: '#A3B1BE' }}>
-        Tudo o que a sua cidade oferece num só app. Gratuito para você.
+        Tudo o que a sua cidade oferece num só lugar. Grátis para você.
       </p>
 
       <div className="flex flex-col gap-4 w-full" style={{ maxWidth: 320 }}>

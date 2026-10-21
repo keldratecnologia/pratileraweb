@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 const links = [
   { label: 'Como funciona',     href: '/#como-funciona' },
-  { label: 'Para Consumidores', href: '/#consumidores' },
-  { label: 'Para Negócios',     href: '/#negocios' },
+  { label: 'Para negócios',     href: '/#negocios' },
+  { label: 'Planos e preços',   href: '/planos-e-precos' },
 ];
 
 export default function Navbar() {

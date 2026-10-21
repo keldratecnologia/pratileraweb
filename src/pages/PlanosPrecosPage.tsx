@@ -1,383 +1,231 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { definirPagina } from '../lib/seo';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, CheckCircle, Store, Mic } from 'lucide-react';
+import { Check } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import BotoesLojas from '../components/BotoesLojas';
 
-/* Preço ÚNICO para autônomo e empresa desde 30/09/2026 — antes eram dois
-   cartões (CPF e CNPJ, este pagando o dobro). Com o mesmo valor, dois cartões
-   iguais só fariam a pessoa procurar a diferença que não existe.
-   ⚠️ Espelho de functions/src/payments.ts (quem cobra) e src/constants/pricing.ts
-   do app. Mudou aqui, mude lá. */
-const PRICING_PLANS = [
-  {
-    icon: Store,
-    type: 'Assinatura Pratilera',
-    subtitle: 'Autônomos, MEI e empresas · mesmo preço',
-    monthly: 19.9,
-    yearlyMonthly: 9.9,
-    yearlyTotal: 118.8,
-  },
-];
+/* ⚠️ Espelho de functions/src/payments.ts (quem cobra) e src/constants/pricing.ts
+   do app. Mudou aqui, mude lá. Preço ÚNICO para autônomo, MEI e empresa desde
+   30/09/2026. */
+const MENSAL = 19.9;
+const ANUAL_POR_MES = 9.9;
+const ANUAL_TOTAL = 118.8;
+const EVENTO = 39.9;
 
-const EVENT_PRICE = 39.9;
-
-/* Calculado, não escrito à mão: o "-20%" fixo teria sobrevivido à troca de
-   preço anunciando um desconto que já não existia. */
-const DESCONTO_ANUAL = Math.round((1 - PRICING_PLANS[0].yearlyMonthly / PRICING_PLANS[0].monthly) * 100);
+/* Calculado, não escrito à mão: um "-20%" fixo sobreviveu a uma troca de preço
+   anunciando um desconto que já não existia. */
+const DESCONTO_ANUAL = Math.round((1 - ANUAL_POR_MES / MENSAL) * 100);
 
 const fmt = (v: number) => v.toFixed(2).replace('.', ',');
 
-/* Só o que o plano pago acrescenta. A lista antiga misturava as duas coisas —
-   contato por WhatsApp, mapa e avaliações existem no gratuito também, e
-   cobrá-los na comunicação é prometer o que a pessoa já tem. */
-const INCLUDED = [
-  'Suas fotos no perfil e nos resultados de busca',
-  'Selo de verificado ao lado do seu nome',
-  'Aparecer antes de quem não assina',
-  'Relatório de visitas e de contatos recebidos',
-  'Resposta pública às avaliações dos clientes',
+const GRATIS = [
+  'Perfil no app, na busca e nas listas da cidade',
+  'Telefone e WhatsApp funcionando',
+  'Edite endereço, horário e contatos quando quiser',
+  'Avaliações dos clientes visíveis no perfil',
 ];
 
+/* Só o que a assinatura acrescenta ao grátis. */
+const ASSINATURA = [
+  'Suas fotos no perfil e nos resultados da busca',
+  'Aparece antes de quem não assina',
+  'Selo de verificado ao lado do nome',
+  'Responda às avaliações dos clientes',
+  'Veja quantas visitas e contatos o perfil recebeu',
+];
+
+const EVENTO_INCLUI = [
+  'Aparece na agenda de eventos da cidade',
+  'Página do evento com data, local e link para ingressos',
+  'Sem comissão sobre os ingressos',
+];
+
+const PERGUNTAS = [
+  {
+    p: 'Pagou, já aparece?',
+    r: 'O plano é liberado assim que o pagamento é confirmado, mas o perfil continua passando pela conferência da nossa equipe antes de aparecer no app.',
+  },
+  {
+    p: 'Se eu parar de pagar, meu negócio some?',
+    r: 'Não. O perfil volta para o plano grátis e continua no app, com telefone e WhatsApp. Só o evento sai do ar, quando termina.',
+  },
+  {
+    p: 'Tem fidelidade ou multa?',
+    r: 'Não. Você cancela pelo próprio app quando quiser, e o plano continua valendo até o fim do período já pago.',
+  },
+  {
+    p: 'O Pratilera cobra comissão?',
+    r: 'Não. Você fecha direto com o cliente, pelo WhatsApp ou telefone, e não paga nada por contato recebido.',
+  },
+  {
+    p: 'Como eu pago?',
+    r: 'Pelo app, com Pix ou cartão. O plano anual é cobrado de uma vez.',
+  },
+];
+
+function Lista({ itens, cor, corTexto }: { itens: string[]; cor: string; corTexto: string }) {
+  return (
+    <ul className="space-y-3">
+      {itens.map((t) => (
+        <li key={t} className="flex gap-3 text-[15px] leading-snug" style={{ color: corTexto }}>
+          <Check size={18} className="flex-shrink-0 mt-0.5" color={cor} />
+          {t}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function PlanosPrecosPage() {
-  const [cycle, setCycle] = useState<'monthly' | 'yearly'>('monthly');
+  const [ciclo, setCiclo] = useState<'monthly' | 'yearly'>('yearly');
+
+  useEffect(() => {
+    definirPagina({
+      titulo: 'Planos e preços | Pratilera',
+      descricao: 'Anunciar no Pratilera é grátis. Assinatura a partir de R$ 9,90/mês no plano anual, mesmo preço para autônomo, MEI e empresa. Sem comissão e sem fidelidade.',
+      caminho: '/planos-e-precos',
+    });
+  }, []);
 
   return (
     <div className="min-h-screen bg-bg font-calibri overflow-x-hidden">
       <Navbar />
 
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section
-        className="relative pt-32 pb-20 px-6 text-center overflow-hidden"
-        style={{ backgroundColor: '#FF7300' }}
-      >
-        <div
-          className="absolute inset-0 opacity-[0.07] pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(circle, #1C3245 1px, transparent 1px)', backgroundSize: '28px 28px' }}
-        />
-
-        <Link
-          to="/"
-          className="absolute top-20 left-6 flex items-center gap-2 text-sm font-semibold hover:opacity-70 transition-opacity"
-          style={{ color: '#1C3245', fontFamily: 'var(--font-gotham)' }}
-        >
-          <ArrowLeft size={16} />
-          Voltar
-        </Link>
-
+      {/* ── TOPO ─────────────────────────────────────────────────────────── */}
+      <section className="px-6 pt-32 pb-16 lg:pt-36 lg:pb-20" style={{ backgroundColor: '#FF7300' }}>
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative z-10 max-w-xl mx-auto"
+          transition={{ duration: 0.5 }}
+          className="max-w-5xl mx-auto"
         >
-          <span
-            className="text-xs font-bold tracking-widest uppercase block mb-4"
-            style={{ color: '#1C3245', fontFamily: 'var(--font-gotham)', opacity: 0.7 }}
-          >
-            Anuncie no Pratilera
-          </span>
           <h1
-            className="text-3xl sm:text-4xl mb-5 leading-tight"
-            style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245', fontWeight: 800, letterSpacing: '-0.02em' }}
+            className="text-4xl sm:text-5xl leading-[1.08] mb-5 max-w-3xl"
+            style={{ color: '#1C3245', fontWeight: 700, letterSpacing: '-0.035em' }}
           >
-            Planos e Preços
+            Anunciar é grátis. Assinar faz o seu negócio aparecer mais.
           </h1>
-          <p className="text-base leading-relaxed" style={{ color: '#2B3B4A' }}>
-            Anunciar é grátis. Os planos abaixo são para quem quer aparecer
-            mais. Cancele quando quiser.
+          <p className="text-lg sm:text-xl leading-relaxed max-w-2xl" style={{ color: '#2B3B4A' }}>
+            O mesmo preço para autônomo, MEI e empresa. Sem comissão e sem fidelidade.
           </p>
         </motion.div>
-
       </section>
 
       {/* ── PLANOS ───────────────────────────────────────────────────────── */}
-      <section className="py-20 px-6 bg-bg">
-        <div className="max-w-4xl mx-auto">
+      <section className="px-6 py-16 lg:py-20 bg-bg">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-3 gap-5 items-start">
 
-          {/* O GRATUITO vem primeiro e fora do seletor de ciclo: ele não tem
-              ciclo, e escondê-lo depois dos pagos faria a página repetir a
-              mensagem antiga de que anunciar exigia pagar — que era o que o
-              site dizia até hoje, e deixou de ser verdade com o freemium. */}
-          <div
-            className="rounded-3xl p-6 sm:p-8 mb-10"
-            style={{ backgroundColor: '#FFFFFF' }}
+          {/* Grátis */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.05 }}
+            className="rounded-3xl p-8 bg-white border"
+            style={{ borderColor: '#E8EEF3' }}
           >
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <span
-                  className="text-xs font-bold tracking-widest uppercase block mb-2"
-                  style={{ color: '#FF7300', fontFamily: 'var(--font-gotham)' }}
-                >
-                  Comece de graça
-                </span>
-                <h3
-                  className="text-xl font-bold mb-1"
-                  style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245' }}
-                >
-                  Seu negócio no ar, sem mensalidade
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#495E70' }}>
-                  Cadastro, perfil com nome, contato, endereço e horários, e
-                  aparecer nas buscas da sua cidade.
-                </p>
-              </div>
-              <div className="text-right shrink-0">
-                <span
-                  className="text-3xl font-bold block"
-                  style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245' }}
-                >
-                  R$ 0
-                </span>
+            <p className="text-sm font-semibold mb-2" style={{ color: '#495E70' }}>Grátis</p>
+            <p className="text-4xl font-bold mb-1" style={{ color: '#1C3245', letterSpacing: '-0.03em' }}>R$ 0</p>
+            <p className="text-sm mb-7" style={{ color: '#495E70' }}>para sempre</p>
+            <Lista itens={GRATIS} cor="#06C1B6" corTexto="#2B3B4A" />
+          </motion.div>
+
+          {/* Assinatura */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.12 }}
+            className="rounded-3xl p-8"
+            style={{ backgroundColor: '#1C3245' }}
+          >
+            <div className="flex items-center justify-between gap-3 mb-2">
+              <p className="text-sm font-semibold" style={{ color: '#FF8C33' }}>Assinatura</p>
+              <div className="inline-flex p-1 rounded-xl" style={{ backgroundColor: 'rgba(255,255,255,0.08)' }} role="group" aria-label="Ciclo de cobrança">
+                {(['yearly', 'monthly'] as const).map((c) => (
+                  <button
+                    key={c}
+                    type="button"
+                    onClick={() => setCiclo(c)}
+                    aria-pressed={ciclo === c}
+                    className="px-3 py-1.5 rounded-lg text-xs font-bold transition-colors cursor-pointer"
+                    style={{
+                      backgroundColor: ciclo === c ? '#FFFFFF' : 'transparent',
+                      color: ciclo === c ? '#1C3245' : '#C4D0DA',
+                    }}
+                  >
+                    {c === 'yearly' ? `Anual −${DESCONTO_ANUAL}%` : 'Mensal'}
+                  </button>
+                ))}
               </div>
             </div>
-          </div>
+            <p className="text-white mb-1">
+              <span className="text-4xl font-bold" style={{ letterSpacing: '-0.03em' }}>
+                R$ {fmt(ciclo === 'yearly' ? ANUAL_POR_MES : MENSAL)}
+              </span>
+              <span className="text-sm font-semibold">/mês</span>
+            </p>
+            <p className="text-sm mb-7" style={{ color: '#C4D0DA' }}>
+              {ciclo === 'yearly'
+                ? `R$ ${fmt(ANUAL_TOTAL)} cobrados uma vez por ano`
+                : 'cobrado todo mês, cancele quando quiser'}
+            </p>
+            <p className="text-sm font-semibold mb-3 text-white">Tudo do grátis, e mais:</p>
+            <Lista itens={ASSINATURA} cor="#FF8C33" corTexto="#E8EEF3" />
+          </motion.div>
 
-          {/* Seletor Mensal / Anual */}
-          <div className="flex justify-center mb-8">
-            <div
-              className="inline-flex p-1 rounded-2xl"
-              style={{ backgroundColor: '#F3F4F6' }}
-            >
-              {(['monthly', 'yearly'] as const).map((c) => (
-                <button
-                  key={c}
-                  onClick={() => setCycle(c)}
-                  className="relative px-6 py-2.5 rounded-xl text-sm font-bold transition-colors"
-                  style={{
-                    fontFamily: 'var(--font-gotham)',
-                    backgroundColor: cycle === c ? '#FF7300' : 'transparent',
-                    color: cycle === c ? '#FFFFFF' : '#495E70',
-                  }}
-                >
-                  {c === 'monthly' ? 'Mensal' : 'Anual'}
-                  {c === 'yearly' && (
-                    <span
-                      className="ml-2 text-[10px] font-bold px-1.5 py-0.5 rounded-full align-middle"
-                      style={{
-                        backgroundColor: cycle === 'yearly' ? 'rgba(255,255,255,0.25)' : '#06C1B615',
-                        color: cycle === 'yearly' ? '#FFFFFF' : '#06C1B6',
-                      }}
-                    >
-                      -{DESCONTO_ANUAL}%
-                    </span>
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Cards pagos */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-4 max-w-3xl mx-auto">
-            {PRICING_PLANS.map((plan, i) => {
-              const Icon = plan.icon;
-              const price = cycle === 'monthly' ? plan.monthly : plan.yearlyMonthly;
-              return (
-                <motion.div
-                  key={plan.type}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(28,50,69,0.10)' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: i * 0.08 }}
-                  className="bg-white rounded-2xl p-7 border flex flex-col gap-4 items-center text-center"
-                  style={{
-                    borderColor: '#E8EEF3',
-                    borderTopWidth: '3px',
-                    borderTopColor: '#FF7300',
-                    boxShadow: '0 2px 8px rgba(28,50,69,0.06)',
-                  }}
-                >
-                  <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: '#FFF4EC' }}
-                  >
-                    <Icon size={20} color="#FF7300" />
-                  </div>
-                  <div>
-                    <h3
-                      className="text-base font-bold mb-1"
-                      style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245' }}
-                    >
-                      {plan.type}
-                    </h3>
-                    <p className="text-sm" style={{ color: '#495E70' }}>
-                      {plan.subtitle}
-                    </p>
-                  </div>
-                  <div className="mt-auto pt-2" style={{ borderTop: '1px solid #F3F4F6' }}>
-                    <div className="flex items-baseline justify-center gap-1 mb-1">
-                      <span
-                        className="text-3xl font-bold"
-                        style={{ color: '#FF7300', fontFamily: 'var(--font-gotham)' }}
-                      >
-                        R${fmt(price)}
-                      </span>
-                      <span className="text-sm" style={{ color: '#495E70' }}>/mês</span>
-                    </div>
-                    <p className="text-xs" style={{ color: '#9CA3AF' }}>
-                      {cycle === 'monthly'
-                        ? 'no Pix ou no cartão, mesmo valor'
-                        : `Total anual: R$${fmt(plan.yearlyTotal)} (1x)`}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(28,50,69,0.10)' }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: 0.16 }}
-              className="bg-white rounded-2xl p-7 border flex flex-col gap-4 items-center text-center"
-              style={{
-                borderColor: '#E8EEF3',
-                borderTopWidth: '3px',
-                borderTopColor: '#FF7300',
-                boxShadow: '0 2px 8px rgba(28,50,69,0.06)',
-              }}
-            >
-              <div
-                className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                style={{ backgroundColor: '#FFF4EC' }}
-              >
-                <Mic size={20} color="#FF7300" />
-              </div>
-              <div>
-                <h3
-                  className="text-base font-bold mb-1"
-                  style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245' }}
-                >
-                  Evento / Show
-                </h3>
-                <p className="text-sm" style={{ color: '#495E70' }}>
-                  Festas, feiras e atrações locais
-                </p>
-              </div>
-              <div className="mt-auto pt-2" style={{ borderTop: '1px solid #F3F4F6' }}>
-                <div className="flex items-baseline justify-center gap-1 mb-1">
-                  <span
-                    className="text-3xl font-bold"
-                    style={{ color: '#FF7300', fontFamily: 'var(--font-gotham)' }}
-                  >
-                    R${fmt(EVENT_PRICE)}
-                  </span>
-                </div>
-                <p className="text-xs" style={{ color: '#9CA3AF' }}>
-                  cobrança única, sem mensalidade
-                </p>
-              </div>
-            </motion.div>
-          </div>
-
-          <p className="text-center text-xs mt-5" style={{ color: '#9CA3AF' }}>
-            {cycle === 'monthly'
-              ? 'Assinatura mensal recorrente, sem fidelidade. Cancele quando quiser.'
-              : 'Assinatura anual recorrente, cobrada em 1x. Cancele quando quiser.'}
-          </p>
+          {/* Evento */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.19 }}
+            className="rounded-3xl p-8 bg-white border"
+            style={{ borderColor: '#E8EEF3' }}
+          >
+            <p className="text-sm font-semibold mb-2" style={{ color: '#FF7300' }}>Evento</p>
+            <p className="text-4xl font-bold mb-1" style={{ color: '#1C3245', letterSpacing: '-0.03em' }}>R$ {fmt(EVENTO)}</p>
+            <p className="text-sm mb-7" style={{ color: '#495E70' }}>por evento, cobrança única</p>
+            <Lista itens={EVENTO_INCLUI} cor="#FF7300" corTexto="#2B3B4A" />
+          </motion.div>
         </div>
+
+        <p className="max-w-5xl mx-auto text-sm mt-6" style={{ color: '#607A8E' }}>
+          Pagamento por Pix ou cartão, pelo app.
+        </p>
       </section>
 
-      {/* ── O QUE ESTÁ INCLUSO ───────────────────────────────────────────── */}
-      <section className="py-16 px-6" style={{ backgroundColor: '#F3F4F6' }}>
-        <div className="max-w-xl mx-auto text-center">
-          <span
-            className="text-xs font-bold tracking-widest uppercase block mb-3"
-            style={{ color: '#FF7300', fontFamily: 'var(--font-gotham)' }}
-          >
-            Nos planos pagos
-          </span>
-          <h2
-            className="text-xl sm:text-2xl font-bold mb-8"
-            style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245' }}
-          >
-            O que você ganha assinando
+      {/* ── PERGUNTAS ────────────────────────────────────────────────────── */}
+      <section className="px-6 pb-20 lg:pb-24 bg-bg">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1fr_2fr] gap-10">
+          <h2 className="text-3xl font-bold leading-tight" style={{ color: '#1C3245', letterSpacing: '-0.03em' }}>
+            Perguntas que todo mundo faz
           </h2>
-          <div className="inline-flex flex-col gap-3 text-left mx-auto">
-            {INCLUDED.map((item, i) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, y: 8 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.35, delay: i * 0.05 }}
-                className="flex items-center gap-3"
-              >
-                <CheckCircle size={18} color="#FF7300" className="flex-shrink-0" />
-                <span className="text-sm" style={{ color: '#495E70' }}>{item}</span>
-              </motion.div>
+          <dl className="divide-y divide-[#E8EEF3]">
+            {PERGUNTAS.map(({ p, r }) => (
+              <div key={p} className="py-5 first:pt-0">
+                <dt className="font-bold mb-1.5" style={{ color: '#1C3245' }}>{p}</dt>
+                <dd className="leading-relaxed" style={{ color: '#495E70' }}>{r}</dd>
+              </div>
             ))}
-          </div>
+          </dl>
         </div>
       </section>
 
-      {/* ── DOWNLOAD CTA — mesmo padrão da homepage ──────────────────────── */}
-      <section
-        className="py-24 px-6 text-center"
-        style={{ backgroundColor: '#FF7300' }}
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-xl mx-auto"
-        >
-          <img
-            src="/pratilera-icon.png"
-            alt="Ícone do app Pratilera"
-            className="mx-auto mb-6 shadow-xl block rounded-3xl"
-            style={{ width: '96px', height: '96px', objectFit: 'contain' }}
-          />
-          <h2
-            className="text-3xl sm:text-4xl font-bold mb-4"
-            style={{ fontFamily: 'var(--font-gotham)', color: '#1C3245' }}
-          >
-            Comece a anunciar hoje
-          </h2>
-          <p className="text-base mb-10" style={{ color: '#2B3B4A', opacity: 0.85 }}>
-            Disponível para iOS e Android.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://apps.apple.com/br/app/id6776366689"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Baixar na App Store"
-              className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl hover:scale-105 active:scale-95 transition-transform"
-              style={{ backgroundColor: '#FFFFFF', boxShadow: '0 8px 24px rgba(0,0,0,0.15)', minWidth: '180px' }}
-            >
-              <svg viewBox="0 0 24 24" className="flex-shrink-0" style={{ width: '28px', height: '28px', fill: '#1C3245' }}>
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-              </svg>
-              <span className="text-left">
-                <span className="block text-xs font-medium" style={{ color: '#768798' }}>Baixar na</span>
-                <span className="block text-base font-bold" style={{ color: '#1C3245' }}>App Store</span>
-              </span>
-            </a>
-
-            <a
-              href="https://play.google.com/store/apps/details?id=com.pratileraapp"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Baixar na Play Store"
-              className="inline-flex items-center gap-4 px-6 py-4 rounded-2xl hover:scale-105 active:scale-95 transition-transform"
-              style={{ backgroundColor: '#FFFFFF', boxShadow: '0 8px 24px rgba(0,0,0,0.15)', minWidth: '180px' }}
-            >
-              <svg viewBox="0 0 24 24" className="flex-shrink-0" style={{ width: '28px', height: '28px', fill: '#1C3245' }}>
-                <path d="M3.18 23.76c.37.2.8.22 1.2.04l13.11-7.44-2.83-2.83-11.48 10.23zm-1.46-20.5C1.48 3.68 1.5 4.2 1.75 4.64L13.2 12 1.72 19.36c-.25.44-.27.96-.02 1.38zM22.56 10.24l-2.56-1.45L16.88 12l3.12 3.12 2.56-1.45c.73-.41.73-1.5 0-1.91zM4.38.2C3.98.02 3.55.04 3.18.25L14.66 12 3.18 23.75c.37.21.8.23 1.2.05L19.12 13.5a1 1 0 000-1.75L4.38.2z"/>
-              </svg>
-              <span className="text-left">
-                <span className="block text-xs font-medium" style={{ color: '#768798' }}>Baixar na</span>
-                <span className="block text-base font-bold" style={{ color: '#1C3245' }}>Play Store</span>
-              </span>
-            </a>
+      {/* ── BAIXAR ───────────────────────────────────────────────────────── */}
+      <section className="px-6 py-20" style={{ backgroundColor: '#FF7300' }}>
+        <div className="max-w-5xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 text-center lg:text-left">
+          <div>
+            <h2 className="text-3xl sm:text-[2.4rem] font-bold leading-tight mb-3" style={{ color: '#1C3245', letterSpacing: '-0.03em' }}>
+              Cadastre o seu negócio pelo app.
+            </h2>
+            <p className="text-lg" style={{ color: '#2B3B4A' }}>
+              Se ele já aparece, busque pelo nome e toque em “Reivindicar”.
+            </p>
           </div>
-        </motion.div>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center shrink-0">
+            <BotoesLojas />
+          </div>
+        </div>
       </section>
 
       <Footer />

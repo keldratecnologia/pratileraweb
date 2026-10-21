@@ -14,6 +14,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export default function ExcluirContaPage() {
   return (
     <LegalLayout
+      rotulo="Ajuda"
       title="Exclusão de Conta e Dados"
       subtitle="Como excluir sua conta do Pratilera e o que acontece com os seus dados."
       lastUpdated="15 de junho de 2026"

@@ -62,9 +62,10 @@ function Faq({ question, children }: { question: string; children: React.ReactNo
 export default function SuportePage() {
   return (
     <LegalLayout
+      rotulo="Ajuda"
       title="Central de Suporte"
       subtitle="Precisa de ajuda com o Pratilera? Fale com a gente — respondemos o quanto antes."
-      lastUpdated="15 de junho de 2026"
+      lastUpdated="21 de outubro de 2026"
     >
       <Section title="Fale com a gente">
         <p>
@@ -96,12 +97,18 @@ export default function SuportePage() {
         <div className="space-y-5">
           <Faq question="O aplicativo é gratuito?">
             Sim. Para quem busca serviços, estabelecimentos e eventos, o Pratilera é
-            totalmente gratuito. Negócios e profissionais que desejam ter uma vitrine
-            contam com planos de assinatura.
+            totalmente gratuito. Para negócios, anunciar também é grátis; quem quer
+            aparecer mais pode assinar um plano.
           </Faq>
           <Faq question="Como anuncio o meu negócio?">
             Baixe o aplicativo, crie sua conta e siga o passo a passo para cadastrar o
-            seu perfil. Em caso de dúvidas, fale com a gente pelos canais acima.
+            seu perfil. É grátis. O perfil passa por uma conferência da nossa equipe
+            antes de aparecer no app. Em caso de dúvidas, fale com a gente pelos canais acima.
+          </Faq>
+          <Faq question="Meu negócio já aparece no app. Como assumo o perfil?">
+            Muitos negócios da região já estão no Pratilera, cadastrados a partir de
+            informações públicas. Busque o nome do seu negócio no app e toque em
+            "Reivindicar". Depois da conferência, o perfil passa a ser seu para editar.
           </Faq>
           <Faq question="Em quais cidades o Pratilera está disponível?">
             Atendemos Belo Horizonte, Capim Branco, Confins, Funilândia, Lagoa Santa,

@@ -15,7 +15,7 @@ import BotoesLojas from '../components/BotoesLojas';
    na situação. Cada uma com a tela real do app que resolve. */
 const CENAS = [
   {
-    titulo: 'Precisa de um eletricista em Lagoa Santa hoje?',
+    titulo: 'Precisa de um eletricista perto de você hoje?',
     texto: 'Escolha a categoria ou busque pelo nome. Filtre por distância, pela avaliação ou por quem está aberto agora.',
     tela: '/telas/servicos.webp',
   },
@@ -355,38 +355,30 @@ export default function HomePage() {
         id="download"
         aria-label="Download do aplicativo"
       >
-        <div className="max-w-5xl mx-auto grid md:grid-cols-[1.2fr_1fr] gap-12 md:gap-6 items-center">
+        <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5 }}
-            className="text-center md:text-left"
+            className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 text-center lg:text-left"
           >
+            <div>
             <h2
-              className="text-3xl sm:text-[2.6rem] font-bold leading-tight mb-4"
+              className="text-3xl sm:text-[2.6rem] font-bold leading-tight mb-3"
               style={{ color: '#1C3245', letterSpacing: '-0.03em' }}
             >
               Baixe grátis e veja o que tem perto de você.
             </h2>
-            <p className="text-lg mb-9" style={{ color: '#2B3B4A' }}>
-              Para iPhone e Android. Sem pagar nada para procurar.
+            <p className="text-lg" style={{ color: '#2B3B4A' }}>
+              Disponível para iPhone e Android.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center shrink-0">
               <BotoesLojas />
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6 }}
-            className="flex justify-center"
-            aria-hidden="true"
-          >
-            <Celular src="/telas/categorias.webp" className="w-[220px] sm:w-[240px]" />
-          </motion.div>
         </div>
       </section>
 

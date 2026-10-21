@@ -97,7 +97,7 @@ export default function HomePage() {
   useEffect(() => {
     definirPagina({
       titulo: 'Pratilera: negócios, serviços e eventos de BH e região',
-      descricao: 'Encontre negócios, serviços, eventos e serviços públicos de Belo Horizonte e região. Veja horário e avaliações e chame no WhatsApp. Grátis para iPhone e Android.',
+      descricao: 'Encontre negócios, serviços e eventos de Belo Horizonte e região. Veja horário e avaliações e chame no WhatsApp. Grátis para iPhone e Android.',
       caminho: '/',
     });
   }, []);
@@ -142,7 +142,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-lg sm:text-xl mb-9 leading-relaxed max-w-xl mx-auto lg:mx-0" style={{ color: '#2B3B4A' }}>
-              Negócios, serviços, eventos e serviços públicos de Belo Horizonte e região. Veja o horário, as avaliações e chame no WhatsApp.
+              Negócios, serviços e eventos de Belo Horizonte e região. Veja o horário, as avaliações e chame no WhatsApp.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">

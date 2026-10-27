@@ -37,7 +37,7 @@ export interface LegalSection {
   items?: LegalItem[];
 }
 
-export const LEGAL_LAST_UPDATED = '13 de outubro de 2026';
+export const LEGAL_LAST_UPDATED = '21 de outubro de 2026';
 
 // ─── Termos de Uso ───────────────────────────────────────────────────────────
 
@@ -127,11 +127,11 @@ export const TERMS_SECTIONS: LegalSection[] = [
     heading: '8. PLANOS, PAGAMENTOS E CANCELAMENTO',
     paragraphs: [
       '8.1. O uso da Plataforma como Consumidor é gratuito.',
-      '8.2. Anunciar é gratuito. Os Planos pagos são opcionais e liberam recursos adicionais. Sem Plano, o Perfil permanece publicado, pode ser editado e continua aparecendo nas buscas e listas, mas não exibe as fotos enviadas, não recebe o selo de verificação, não aparece antes dos concorrentes e não dá acesso às métricas de visitas e contatos. A divulgação de eventos, por sua natureza temporária, é exclusiva dos Planos pagos.',
+      '8.2. Anunciar é gratuito. Os Planos pagos são opcionais e liberam recursos adicionais. Sem Plano, o Perfil permanece publicado, pode ser editado e continua aparecendo nas buscas e listas, mas não exibe as fotos enviadas, não recebe o selo de verificação, não aparece antes dos concorrentes, não permite responder às avaliações e não dá acesso às métricas de visitas e contatos. A divulgação de eventos, por sua natureza temporária, é exclusiva dos Planos pagos.',
       '8.3. Os valores, os ciclos disponíveis (mensal, anual e evento) e o que cada Plano inclui são exibidos na tela de planos do aplicativo no momento da contratação, e prevalecem sobre qualquer outra comunicação.',
       '8.4. Os pagamentos são processados por instituição de pagamento contratada. O Pratilera não armazena dados completos de cartão.',
       '8.5. Os Planos mensal e anual são assinaturas de renovação automática, cobradas no mesmo ciclo até que sejam canceladas pelo Anunciante.',
-      '8.6. A divulgação de evento é contratação avulsa, sem renovação automática. O prazo de divulgação começa a contar a partir da confirmação do pagamento, e não da aprovação prevista na seção 4.',
+      '8.6. A divulgação de evento é contratação avulsa, sem renovação automática. Ela vale da confirmação do pagamento até o último dia do evento informado no Perfil. O tempo da aprovação prevista na seção 4 não estende esse período.',
       '8.7. Os valores e condições dos Planos podem ser alterados mediante aviso prévio de 30 (trinta) dias, sem afetar ciclo já pago.',
       '8.8. Em caso de inadimplência, o acesso às funcionalidades pagas é suspenso até a regularização, permanecendo o Perfil publicado na forma do item 8.2.',
       '8.9. Nas listas e buscas, os Perfis com Plano ativo aparecem antes dos demais. Dentro de cada grupo, a ordem considera critérios como as avaliações recebidas, a proximidade (quando o Usuário permite o uso da localização), a administração do Perfil pelo próprio responsável e um sorteio entre Perfis em condições equivalentes, renovado a cada acesso. Quando o Usuário escolhe ordenar por distância ou por avaliação, prevalece a escolha dele. Os critérios podem ser ajustados para melhorar a experiência, e a posição de um Perfil não representa avaliação de qualidade pelo Pratilera.',

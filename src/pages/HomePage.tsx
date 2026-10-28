@@ -29,11 +29,6 @@ const CENAS = [
     texto: 'Um toque e a conversa abre direto com o negócio. Sem intermediário: você combina tudo com quem vai te atender.',
     tela: '/telas/whatsapp.webp',
   },
-  {
-    titulo: 'E os serviços públicos da cidade também.',
-    texto: 'UBS, CRAS, escolas, hospitais, prefeitura e mais, com endereço e telefone. Além da agenda de shows, festas e feiras da região.',
-    tela: '/telas/utilidade.webp',
-  },
 ];
 
 /* O que cada plano dá — o mesmo que a tela de planos do app diz. */

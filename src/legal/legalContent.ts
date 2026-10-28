@@ -37,7 +37,7 @@ export interface LegalSection {
   items?: LegalItem[];
 }
 
-export const LEGAL_LAST_UPDATED = '21 de outubro de 2026';
+export const LEGAL_LAST_UPDATED = '27 de outubro de 2026';
 
 // ─── Termos de Uso ───────────────────────────────────────────────────────────
 
@@ -246,6 +246,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
       { text: 'Identificador do dispositivo e sistema operacional.' },
       { text: 'Versão do aplicativo e informações de conexão (endereço IP).' },
       { text: 'Token de notificação, necessário para enviar avisos ao seu aparelho.' },
+      { text: 'Identificador de publicidade do aparelho (no iPhone, apenas se você permitir o rastreamento), usado para medir e direcionar os anúncios do próprio Pratilera.' },
       { text: 'Dados de uso: telas acessadas, buscas realizadas, cliques e interações. Para Anunciantes, contabilizamos visitas ao Perfil e cliques em contato, exibidos como métricas.' },
       { text: 'Localização aproximada, apenas mediante autorização expressa, e exclusivamente para identificar em qual das cidades atendidas você está e deixá-la pré-selecionada, mostrar a distância até os negócios e considerar a proximidade na ordem das listas. O cálculo é feito no próprio aparelho, e a localização não é enviada aos nossos servidores. A autorização pode ser recusada sem perda de funcionalidades, e a localização não é usada para rastrear deslocamento nem para publicidade.' },
     ],
@@ -260,6 +261,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
       { text: 'Enviar notificações e avisos operacionais sobre o serviço — Execução de contrato e legítimo interesse (Art. 7º, IX).' },
       { text: 'Personalizar resultados de busca e recomendações — Legítimo interesse (Art. 7º, IX).' },
       { text: 'Análise de uso para melhoria contínua do produto — Legítimo interesse (Art. 7º, IX).' },
+      { text: 'Medição e direcionamento dos anúncios do próprio Pratilera em outras plataformas — Legítimo interesse (Art. 7º, IX) e, no iPhone, consentimento pela permissão de rastreamento.' },
       { text: 'Prevenção a fraudes e segurança da Plataforma — Legítimo interesse e cumprimento de obrigação legal.' },
       { text: 'Comunicações de marketing e novidades — Consentimento (Art. 7º, I), revogável a qualquer tempo.' },
       { text: 'Pré-seleção da cidade, distância e proximidade nas listas a partir da localização — Consentimento (Art. 7º, I), revogável nos ajustes do aparelho.' },
@@ -283,6 +285,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
       { text: 'Google (Firebase): autenticação, banco de dados, armazenamento de arquivos, notificações e análise de uso.' },
       { text: 'Google (Maps): exibição de mapas e conversão de endereço em coordenadas.' },
       { text: 'Google (Tag Manager, Analytics e Ads) e Meta: medição de visitas e de anúncios no site pratilera.app.br, apenas se você aceitar os cookies de medição e publicidade.' },
+      { text: 'Meta (Facebook e Instagram): no aplicativo, medição de instalações e de ações como cadastro, contato com negócios e contratação de plano, para avaliar e direcionar os anúncios do próprio Pratilera. No iPhone, o identificador de publicidade só é compartilhado se você permitir o rastreamento.' },
       { text: 'Apple: quando o Usuário utiliza o Sign in with Apple.' },
       { text: 'Asaas Gestão Financeira S.A.: processamento de cobranças, assinaturas e devoluções.' },
       { text: 'Provedor de envio de e-mails transacionais.' },
@@ -366,7 +369,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
   {
     heading: '',
     paragraphs: [
-      'Você pode gerenciar as permissões de rastreamento nas configurações do seu dispositivo (iOS: Ajustes > Privacidade; Android: Configurações > Privacidade).',
+      'Você pode recusar ou revogar a permissão de rastreamento e redefinir ou excluir o identificador de publicidade nas configurações do seu dispositivo (iOS: Ajustes > Privacidade e Segurança > Rastreamento; Android: Configurações > Privacidade > Anúncios).',
     ],
   },
   {

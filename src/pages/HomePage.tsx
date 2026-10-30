@@ -120,7 +120,7 @@ export default function HomePage() {
   useEffect(() => {
     definirPagina({
       titulo: 'Pratilera: negócios, serviços e eventos de BH e região',
-      descricao: 'Encontre negócios, serviços e eventos de Belo Horizonte e região. Veja horário e avaliações e chame no WhatsApp. Grátis para iPhone e Android.',
+      descricao: 'Encontre negócios, serviços e eventos de Belo Horizonte e região. Veja horário, redes sociais e avaliações e chame no WhatsApp. Grátis para iPhone e Android.',
       caminho: '/',
     });
   }, []);
@@ -165,7 +165,7 @@ export default function HomePage() {
             </h1>
 
             <p className="text-lg sm:text-xl mb-9 leading-relaxed max-w-xl mx-auto lg:mx-0" style={{ color: '#2B3B4A' }}>
-              Negócios, serviços e eventos de Belo Horizonte e região. Veja o horário, as avaliações e chame no WhatsApp.
+              Negócios, serviços e eventos de Belo Horizonte e região. Veja o horário, redes sociais, as avaliações e chame no WhatsApp.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
@@ -185,15 +185,16 @@ export default function HomePage() {
             {/* Prova: números conferidos no banco (out/2026) */}
             <dl className="mt-11 flex justify-center lg:justify-start gap-10">
               {([
-                [1500, 'negócios e serviços', '+'],
-                [10, 'cidades', ''],
-                [22, 'categorias', ''],
-              ] as const).map(([n, r, prefixo]) => (
+                [1500, 'negócios e serviços', '+', ''],
+                [10, 'cidades', '', 'e mais em breve'],
+                [22, 'categorias', '', ''],
+              ] as const).map(([n, r, prefixo, nota]) => (
                 <div key={r}>
                   <dt className="text-3xl font-bold leading-none" style={{ color: '#1C3245', letterSpacing: '-0.03em' }}>
                     <Contador valor={n} prefixo={prefixo} />
                   </dt>
                   <dd className="text-sm mt-1.5 font-medium" style={{ color: '#2B3B4A' }}>{r}</dd>
+                  {nota && <dd className="text-xs mt-0.5 font-semibold text-white">{nota}</dd>}
                 </div>
               ))}
             </dl>

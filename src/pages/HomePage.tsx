@@ -304,7 +304,7 @@ export default function HomePage() {
               Tem um negócio na região? Ele pode já estar no app.
             </h2>
             <p className="text-lg leading-relaxed" style={{ color: '#C4D0DA' }}>
-              Anunciar no Pratilera é grátis. Se o seu negócio já aparece, busque pelo nome dele no app e toque em <strong className="text-white">Reivindicar</strong> para cuidar do perfil. Se não aparece, o cadastro é feito pelo celular.
+              Anunciar no Pratilera é grátis. Se o seu negócio já aparece, busque pelo nome dele no app e toque em <strong className="text-white">Reivindicar</strong> para cuidar do perfil. Se ainda não aparece, faça o cadastro pelo app.
             </p>
           </div>
 

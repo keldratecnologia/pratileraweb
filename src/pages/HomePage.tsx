@@ -1,12 +1,40 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { definirPagina } from '../lib/seo';
-import { motion, useReducedMotion } from 'framer-motion';
+import { animate, motion, useInView, useReducedMotion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Check, ChevronRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Celular from '../components/Celular';
 import BotoesLojas from '../components/BotoesLojas';
+
+/* Número que sobe de 0 até o valor quando aparece na tela. O valor final fica
+   invisível por baixo para reservar a largura, assim os vizinhos não pulam. */
+function Contador({ valor, prefixo = '' }: { valor: number; prefixo?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const visivel = useInView(ref, { once: true });
+  const reduzir = useReducedMotion();
+  const [atual, setAtual] = useState(0);
+
+  useEffect(() => {
+    if (!visivel) return;
+    if (reduzir) { setAtual(valor); return; }
+    const controle = animate(0, valor, {
+      duration: 1.6,
+      ease: 'easeOut',
+      onUpdate: (v) => setAtual(Math.round(v)),
+    });
+    return () => controle.stop();
+  }, [visivel, reduzir, valor]);
+
+  const texto = (n: number) => `${prefixo}${n.toLocaleString('pt-BR')}`;
+  return (
+    <span ref={ref} className="inline-grid" style={{ fontVariantNumeric: 'tabular-nums' }}>
+      <span className="invisible col-start-1 row-start-1" aria-hidden="true">{texto(valor)}</span>
+      <span className="col-start-1 row-start-1">{texto(atual)}</span>
+    </span>
+  );
+}
 
 /* ─── Dados do app ────────────────────────────────────────────────────────── */
 
@@ -156,13 +184,15 @@ export default function HomePage() {
 
             {/* Prova: números conferidos no banco (out/2026) */}
             <dl className="mt-11 flex justify-center lg:justify-start gap-10">
-              {[
-                ['+1.500', 'negócios e serviços'],
-                ['10', 'cidades'],
-                ['22', 'categorias'],
-              ].map(([n, r]) => (
+              {([
+                [1500, 'negócios e serviços', '+'],
+                [10, 'cidades', ''],
+                [22, 'categorias', ''],
+              ] as const).map(([n, r, prefixo]) => (
                 <div key={r}>
-                  <dt className="text-3xl font-bold leading-none" style={{ color: '#1C3245', letterSpacing: '-0.03em' }}>{n}</dt>
+                  <dt className="text-3xl font-bold leading-none" style={{ color: '#1C3245', letterSpacing: '-0.03em' }}>
+                    <Contador valor={n} prefixo={prefixo} />
+                  </dt>
                   <dd className="text-sm mt-1.5 font-medium" style={{ color: '#2B3B4A' }}>{r}</dd>
                 </div>
               ))}

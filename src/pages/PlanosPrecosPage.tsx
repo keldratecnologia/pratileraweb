@@ -190,7 +190,7 @@ export default function PlanosPrecosPage() {
         </div>
 
         <p className="max-w-5xl mx-auto text-sm mt-6" style={{ color: '#607A8E' }}>
-          Pagamento por Pix ou cartão, pelo app.
+          Você contrata e paga direto no app, por Pix ou cartão de crédito.
         </p>
       </section>
 

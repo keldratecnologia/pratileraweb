@@ -185,17 +185,15 @@ export default function HomePage() {
             {/* Prova: números conferidos no banco (out/2026) */}
             <dl className="mt-11 flex justify-center lg:justify-start gap-10">
               {([
-                [1500, 'negócios e serviços', '+', ''],
-                [10, 'cidades', '', 'e mais em breve'],
-                [22, 'categorias', '', ''],
-              ] as const).map(([n, r, prefixo, nota]) => (
+                [1500, 'negócios e serviços', '+'],
+                [10, 'cidades', ''],
+                [22, 'categorias', ''],
+              ] as const).map(([n, r, prefixo]) => (
                 <div key={r}>
                   <dt className="text-3xl font-bold leading-none" style={{ color: '#1C3245', letterSpacing: '-0.03em' }}>
                     <Contador valor={n} prefixo={prefixo} />
                   </dt>
-                  <dd className="text-sm mt-1.5 font-medium" style={{ color: '#2B3B4A' }}>{r}</dd>
-                  {nota && <dd className="text-xs mt-0.5 font-semibold text-white">{nota}</dd>}
-                </div>
+                  <dd className="text-sm mt-1.5 font-medium" style={{ color: '#2B3B4A' }}>{r}</dd>                </div>
               ))}
             </dl>
           </motion.div>
@@ -233,6 +231,12 @@ export default function HomePage() {
                 {city}
               </span>
             ))}
+            <span
+              className="px-4 py-1.5 rounded-full text-sm font-semibold border border-dashed"
+              style={{ borderColor: 'rgba(28,50,69,0.45)', color: '#1C3245' }}
+            >
+              Mais cidades em breve
+            </span>
           </div>
         </motion.div>
       </section>

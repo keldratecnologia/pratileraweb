@@ -203,7 +203,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="relative h-[520px] sm:h-[600px] max-w-[460px] w-full mx-auto"
+            className="relative aspect-[25/36] sm:aspect-auto sm:h-[600px] max-w-[460px] w-full mx-auto"
             aria-hidden="true"
           >
             <Celular src="/telas/perfil.webp" className="absolute right-0 top-10 w-[56%] rotate-[4deg] hidden sm:block" />

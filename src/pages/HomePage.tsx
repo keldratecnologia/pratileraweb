@@ -63,7 +63,7 @@ const CENAS = [
 const PLANO_GRATIS = [
   'Perfil no app, na busca e nas listas da cidade',
   'Telefone e WhatsApp funcionando',
-  'Edite endereço, horário e contatos quando quiser',
+  'Edite endereço, horário, redes sociais e contatos quando quiser',
   'Avaliações dos clientes visíveis no seu perfil',
 ];
 

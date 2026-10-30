@@ -23,7 +23,7 @@ const fmt = (v: number) => v.toFixed(2).replace('.', ',');
 const GRATIS = [
   'Perfil no app, na busca e nas listas da cidade',
   'Telefone e WhatsApp funcionando',
-  'Edite endereço, horário e contatos quando quiser',
+  'Edite endereço, horário, redes sociais e contatos quando quiser',
   'Avaliações dos clientes visíveis no perfil',
 ];
 
@@ -61,7 +61,7 @@ const PERGUNTAS = [
   },
   {
     p: 'Como eu pago?',
-    r: 'Pelo app, com Pix ou cartão. O plano anual é cobrado de uma vez.',
+    r: 'Direto no app, por Pix ou cartão de crédito. O plano mensal é cobrado todo mês, e o anual, em uma única cobrança por ano.',
   },
 ];
 
@@ -115,7 +115,7 @@ export default function PlanosPrecosPage() {
 
       {/* ── PLANOS ───────────────────────────────────────────────────────── */}
       <section className="px-6 py-16 lg:py-20 bg-bg">
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-3 gap-5 items-start">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-3 gap-5 items-stretch">
 
           {/* Grátis */}
           <motion.div
